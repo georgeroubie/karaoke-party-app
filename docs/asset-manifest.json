@@ -1,13 +1,12 @@
 {
   "files": {
-    "main.css": "/react-app-headstart/static/css/main.516e92fa.css",
-    "main.js": "/react-app-headstart/static/js/main.820d765d.js",
-    "static/js/27.6764e0be.chunk.js": "/react-app-headstart/static/js/27.6764e0be.chunk.js",
-    "static/media/logo.svg": "/react-app-headstart/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/react-app-headstart/index.html"
+    "main.css": "/karaoke-party-app/static/css/main.9bd39397.css",
+    "main.js": "/karaoke-party-app/static/js/main.78a5d511.js",
+    "static/js/27.75d76a85.chunk.js": "/karaoke-party-app/static/js/27.75d76a85.chunk.js",
+    "index.html": "/karaoke-party-app/index.html"
   },
   "entrypoints": [
-    "static/css/main.516e92fa.css",
-    "static/js/main.820d765d.js"
+    "static/css/main.9bd39397.css",
+    "static/js/main.78a5d511.js"
   ]
 }

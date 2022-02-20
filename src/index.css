@@ -1,20 +1,28 @@
 /* Typography */
 body {
-  font-family: Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #000;
 }
 
-code {
-  font-family: Consolas, monospace;
+/* Resets */
+button {
+  outline: 0;
+  background-color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+button:hover {
+  background-color: #dcdcdc;
 }
 
 /* Animations */
-@keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+@keyframes winner {
+  from {
+    background-color: #f00;
+  }
+  to {
+    background-color: #fff;
+  }
 }
