@@ -7,9 +7,8 @@ const getItems = () => {
 		} catch (ex) {
 			return [];
 		}
-	} else {
-		return [];
 	}
+	return [];
 };
 
 const saveItems = (items) => {
@@ -17,10 +16,6 @@ const saveItems = (items) => {
 };
 
 const saveItem = (id, name, song) => {
-	if (!name || !song) {
-		alert('Name and song url is required');
-		return;
-	}
 	const savedItems = getItems();
 	if (savedItems.find((item) => item.id === id)) {
 		saveItems(
@@ -31,9 +26,8 @@ const saveItem = (id, name, song) => {
 						name,
 						song,
 					};
-				} else {
-					return item;
 				}
+				return item;
 			})
 		);
 	} else {
