@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { saveItem } from '../helpers/data';
 
-const Container = styled.div`
+const Wrapper = styled.div`
 	margin: 20px auto;
 	display: flex;
 	flex-direction: column;
@@ -40,12 +40,16 @@ const Form = ({ item, onComplete }) => {
 	const [song, setSong] = useState(item.song);
 
 	const save = () => {
+		if (!name || !song) {
+			alert('Name and song url is required');
+			return;
+		}
 		saveItem(item.id, name, song);
 		onComplete();
 	};
 
 	return (
-		<Container>
+		<Wrapper>
 			<Input type="text" placeholder="Name" value={name} onChange={({ target }) => setName(target.value)} />
 			<SongInput
 				type="text"
@@ -58,7 +62,7 @@ const Form = ({ item, onComplete }) => {
 				<Button onClick={onComplete}>Cancel</Button>
 				<Button onClick={save}>Save</Button>
 			</ButtonContainer>
-		</Container>
+		</Wrapper>
 	);
 };
 

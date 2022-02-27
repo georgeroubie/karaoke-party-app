@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -31,7 +31,7 @@ const Icon = styled.span`
 `;
 
 const Navigation = ({ items }) => (
-	<Container>
+	<Wrapper>
 		{items.map(({ icon, text, onClick }) => {
 			return (
 				<Item onClick={onClick} key={icon}>
@@ -40,7 +40,7 @@ const Navigation = ({ items }) => (
 				</Item>
 			);
 		})}
-	</Container>
+	</Wrapper>
 );
 
 Navigation.propTypes = {

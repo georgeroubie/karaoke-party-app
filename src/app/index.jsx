@@ -4,7 +4,7 @@ import Players from './components/Players';
 import Shuffle from './components/Shuffle';
 import Navigation from './components/Navigation';
 
-const Container = styled.div`
+const Wrapper = styled.div`
 	max-width: 320px;
 	margin: 0 auto;
 	padding: 0 10px;
@@ -27,12 +27,12 @@ const App = () => {
 	];
 
 	return (
-		<Container>
+		<Wrapper>
 			<Title onClick={() => window.location.reload()}>Karaoke Party</Title>
 			{show !== 'players' && <Navigation items={items} />}
 			{show === 'players' && <Players hidePlayers={() => setShow(null)} />}
 			{show === 'shuffle' && <Shuffle />}
-		</Container>
+		</Wrapper>
 	);
 };
 

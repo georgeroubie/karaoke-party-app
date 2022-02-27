@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { getItems } from '../helpers/data';
 
-const Container = styled.div`
+const Wrapper = styled.div`
 	padding: 20px 0;
 `;
 
@@ -88,7 +88,7 @@ const Shuffle = () => {
 	return players.length < 2 ? (
 		<Warning>No players, go to PLAYERS page</Warning>
 	) : (
-		<Container>
+		<Wrapper>
 			<Bubble>
 				{players.map(({ id, name, song }, index) => (
 					<Item
@@ -102,7 +102,7 @@ const Shuffle = () => {
 				))}
 			</Bubble>
 			{shuffling ? <Button onClick={stopShuffling}>STOP</Button> : <Button onClick={startShuffling}>SHUFFLE</Button>}
-		</Container>
+		</Wrapper>
 	);
 };
 

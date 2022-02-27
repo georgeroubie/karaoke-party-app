@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { deleteItem, getItems } from '../helpers/data';
 import Form from './Form';
 
-const Container = styled.div`
+const Wrapper = styled.div`
 	margin: 20px auto;
 	border: 2px solid #000;
 `;
@@ -64,7 +64,7 @@ const List = () => {
 	return editItem ? (
 		<Form item={editItem} onComplete={saveIsCompleted} />
 	) : (
-		<Container>
+		<Wrapper>
 			{players.map(({ id, name }) => (
 				<Item key={id}>
 					<ItemTitle>{name}</ItemTitle>
@@ -72,7 +72,7 @@ const List = () => {
 					<ItemButton onClick={() => deletePlayer(id)}>Delete</ItemButton>
 				</Item>
 			))}
-		</Container>
+		</Wrapper>
 	);
 };
 
