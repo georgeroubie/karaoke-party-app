@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from './Form';
 import List from './List';
@@ -12,10 +12,10 @@ const Players = ({ hidePlayers }) => {
 	];
 
 	return (
-		<Fragment>
+		<>
 			<Navigation items={items} />
 			{showAdd ? <Form onComplete={() => setShowAdd(false)} /> : <List />}
-		</Fragment>
+		</>
 	);
 };
 
