@@ -7,9 +7,10 @@ import Play from '../pages/Play';
 const Routing = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<Play />} />
-			<Route path="/players" element={<Players />} />
-			<Route path="/add-player" element={<AddPlayer />} />
+			<Route path="/karaoke-party-app" element={<Play />} />
+			<Route path="/karaoke-party-app/" element={<Play />} />
+			<Route path="/karaoke-party-app/players" element={<Players />} />
+			<Route path="/karaoke-party-app/add-player" element={<AddPlayer />} />
 		</Routes>
 	);
 };
