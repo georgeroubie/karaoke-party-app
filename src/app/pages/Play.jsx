@@ -50,7 +50,7 @@ const Warning = styled.p`
 	user-select: none;
 `;
 
-const Shuffle = () => {
+const Play = () => {
 	const [players, setPlayers] = useState(getItems());
 	const [shuffling, setShuffling] = useState(false);
 	const [animateItem, setAnimateItem] = useState(false);
@@ -106,4 +106,4 @@ const Shuffle = () => {
 	);
 };
 
-export default Shuffle;
+export default Play;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Form from '../components/Form';
 import { deleteItem, getItems } from '../helpers/data';
-import Form from './Form';
 
 const Wrapper = styled.div`
 	margin: 20px auto;
@@ -40,7 +40,7 @@ const ItemButton = styled.button`
 	}
 `;
 
-const List = () => {
+const Players = () => {
 	const [editItem, setEditItem] = useState(null);
 	const [players, setPlayers] = useState(getItems());
 
@@ -76,4 +76,4 @@ const List = () => {
 	);
 };
 
-export default List;
+export default Players;
