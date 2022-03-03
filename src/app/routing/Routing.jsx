@@ -5,14 +5,14 @@ import AddPlayer from '../pages/AddPlayer';
 import Play from '../pages/Play';
 
 const Routing = () => {
-	return (
-		<Routes>
-			<Route path="/karaoke-party-app" element={<Play />} />
-			<Route path="/karaoke-party-app/" element={<Play />} />
-			<Route path="/karaoke-party-app/players" element={<Players />} />
-			<Route path="/karaoke-party-app/add-player" element={<AddPlayer />} />
-		</Routes>
-	);
+  return (
+    <Routes>
+      <Route path="/karaoke-party-app" element={<Play />} />
+      <Route path="/karaoke-party-app/" element={<Play />} />
+      <Route path="/karaoke-party-app/players" element={<Players />} />
+      <Route path="/karaoke-party-app/add-player" element={<AddPlayer />} />
+    </Routes>
+  );
 };
 
 export default Routing;
