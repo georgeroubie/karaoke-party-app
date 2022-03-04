@@ -46,9 +46,9 @@ const Text = styled.span`
 `;
 
 const items = [
-  { icon: 'videogame_asset', text: 'PLAY', url: '/karaoke-party-app/' },
-  { icon: 'people', text: 'PLAYERS', url: '/karaoke-party-app/players' },
-  { icon: 'group_add', text: 'ADD NEW', url: '/karaoke-party-app/add-player' },
+  { icon: 'videogame_asset', text: 'PLAY', url: '/' },
+  { icon: 'people', text: 'PLAYERS', url: '/players' },
+  { icon: 'group_add', text: 'ADD NEW', url: '/add-player' },
 ];
 
 const Menu = () => (
