@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getItems } from '../helpers/data';
 
@@ -60,7 +60,7 @@ const Play = () => {
         players
           .map((value) => ({ value, sort: Math.random() }))
           .sort((a, b) => a.sort - b.sort)
-          .map(({ value }) => value)
+          .map(({ value }) => value),
       );
     }, 100);
   }, [players]);
@@ -95,7 +95,8 @@ const Play = () => {
             href={song}
             target="_blank"
             rel="noreferrer"
-            className={animateItem && index === 0 ? 'animate' : null}>
+            className={animateItem && index === 0 ? 'animate' : null}
+          >
             {name}
           </Item>
         ))}

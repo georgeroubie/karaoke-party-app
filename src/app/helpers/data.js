@@ -28,7 +28,7 @@ const saveItem = (id, name, song) => {
           };
         }
         return item;
-      })
+      }),
     );
   } else {
     saveItems([

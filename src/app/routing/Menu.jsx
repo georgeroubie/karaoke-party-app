@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { NavLink as _NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Wrapper = styled.nav`
   display: flex;

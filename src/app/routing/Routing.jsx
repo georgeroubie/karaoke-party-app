@@ -1,8 +1,8 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Players from '../pages/Players';
+import { Route, Routes } from 'react-router-dom';
 import AddPlayer from '../pages/AddPlayer';
 import Play from '../pages/Play';
+import Players from '../pages/Players';
 
 const Routing = () => {
   return (
