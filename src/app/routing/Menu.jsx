@@ -54,7 +54,7 @@ const items = [
 const Menu = () => (
   <Wrapper>
     {items.map(({ icon, text, url }) => (
-      <NavLink to={url} key={icon} className={({ isActive }) => (isActive ? 'active' : 'none')}>
+      <NavLink to={url} key={icon} className={({ isActive }) => (isActive ? 'active' : null)}>
         <Icon className="material-icons">{icon}</Icon>
         <Text>{text}</Text>
       </NavLink>
