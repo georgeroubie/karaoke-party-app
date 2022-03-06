@@ -1,6 +1,3 @@
-# Website
-https://georgeroubie.github.io/karaoke-party-app/
-
 # Development
 
 ## Requirements
