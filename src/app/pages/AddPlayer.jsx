@@ -1,10 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../components/Form';
+import PageWrapper from '../components/PageWrapper';
 
 const AddPlayer = () => {
   const navigate = useNavigate();
-  return <Form onComplete={() => navigate('/players')} />;
+  return (
+    <PageWrapper title="Add a new player">
+      <Form showAddAnother onComplete={() => navigate('/players')} />
+    </PageWrapper>
+  );
 };
 
 export default AddPlayer;

@@ -1,68 +1,58 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { saveItem } from '../helpers/data';
+import Button from './Button';
+import ButtonWrapper from './ButtonWrapper';
+import _Input from './Input';
 
-const Wrapper = styled.div`
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
+const Input = styled(_Input)`
+  margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
-const Input = styled.input`
-  border: 2px solid #000;
-  outline: 0;
-  border-radius: 0;
-  padding: 10px 20px;
-`;
-
-const SongInput = styled(Input)`
-  border-top-width: 0;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-`;
-
-const Button = styled.button`
-  width: 50%;
-  border: 2px solid #000;
-  border-top-width: 0;
-  padding: 4px 20px;
-
-  &:last-child {
-    border-left-width: 0;
-  }
-`;
-
-const Form = ({ item, onComplete }) => {
+const Form = ({ item, showAddAnother, onComplete }) => {
+  const nameInputRef = useRef(null);
   const [name, setName] = useState(item.name);
   const [song, setSong] = useState(item.song);
 
-  const save = () => {
-    if (!name || !song) {
-      alert('Name and song url is required');
-      return;
-    }
+  const save = (successCallback) => {
     saveItem(item.id, name, song);
-    onComplete();
+    successCallback();
   };
 
+  const resetForm = () => {
+    setName('');
+    setSong('');
+    nameInputRef?.current.focus();
+  };
+
+  useEffect(() => {
+    nameInputRef?.current.focus();
+  }, []);
+
   return (
-    <Wrapper>
-      <Input type="text" placeholder="Name" value={name} onChange={({ target }) => setName(target.value)} />
-      <SongInput
+    <>
+      <Input
         type="text"
-        className="song"
-        placeholder="Song URL"
+        placeholder="Name"
+        value={name}
+        onChange={({ target }) => setName(target.value)}
+        ref={nameInputRef}
+      />
+      <Input
+        type="text"
+        placeholder="Song url (e.g. from YouTube)"
         value={song}
         onChange={({ target }) => setSong(target.value)}
       />
-      <ButtonContainer>
-        <Button onClick={onComplete}>Cancel</Button>
-        <Button onClick={save}>Save</Button>
-      </ButtonContainer>
-    </Wrapper>
+      <ButtonWrapper>
+        <Button text="CANCEL" onClick={onComplete} />
+        <Button text="SAVE" disabled={!name || !song} onClick={() => save(onComplete)} />
+        {showAddAnother && (
+          <Button text="SAVE &amp; ADD NEW" disabled={!name || !song} onClick={() => save(resetForm)} />
+        )}
+      </ButtonWrapper>
+    </>
   );
 };
 
@@ -72,6 +62,7 @@ Form.propTypes = {
     name: PropTypes.string,
     song: PropTypes.string,
   }),
+  showAddAnother: PropTypes.bool,
   onComplete: PropTypes.func.isRequired,
 };
 
@@ -81,6 +72,7 @@ Form.defaultProps = {
     name: '',
     song: '',
   },
+  showAddAnother: false,
 };
 
 export default Form;

@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import PageWrapper from '../components/PageWrapper';
+import Warning from '../components/Warning';
 import { getItems } from '../helpers/data';
+import { setAnimation } from '../theme/styles/helpers';
 
-const Wrapper = styled.div`
-  padding: 20px 0;
-`;
+const Wrapper = styled.div``;
 
 const Bubble = styled.div`
   display: flex;
@@ -12,9 +14,8 @@ const Bubble = styled.div`
 `;
 
 const Item = styled.a`
-  padding: 10px;
+  padding: ${({ theme: { spacing } }) => spacing.normal};
   font-weight: 500;
-  color: #000;
   width: 50%;
   text-align: center;
   white-space: nowrap;
@@ -22,7 +23,7 @@ const Item = styled.a`
   text-overflow: ellipsis;
 
   &.animate {
-    animation: winner linear 0.3s infinite;
+    ${setAnimation('winner linear 0.3s infinite')}
   }
 
   &:hover {
@@ -32,26 +33,25 @@ const Item = styled.a`
 
 const Button = styled.button`
   width: 100px;
-  border: 2px solid #000;
+  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
   padding: 5px 10px;
   text-align: center;
   display: block;
   margin: 20px auto;
 `;
 
-const Warning = styled.p`
-  border: 1px solid #000;
-  background-color: #dcdcdc;
-  margin: 20px auto;
-  padding: 10px;
-  font-size: 1rem;
-  text-align: center;
-  user-select: none;
+const Icon = styled.span`
+  ${({ $spin }) =>
+    $spin &&
+    css`
+      ${setAnimation('spin infinite 500ms linear')}
+    `}
 `;
 
 const Play = () => {
   const [players, setPlayers] = useState(getItems());
   const [shuffling, setShuffling] = useState(false);
+  const [disableShuffling, setDisableShuffling] = useState(false);
   const [animateItem, setAnimateItem] = useState(false);
 
   const shufflePlayers = useCallback(() => {
@@ -76,33 +76,56 @@ const Play = () => {
   };
 
   const stopShuffling = () => {
-    setShuffling(false);
-    setAnimateItem(true);
+    setDisableShuffling(true);
+    setTimeout(() => {
+      setShuffling(false);
+      setAnimateItem(true);
+      setDisableShuffling(false);
+    }, 1500);
   };
 
   useEffect(() => {
     if (shuffling) shufflePlayers();
   }, [shuffling, shufflePlayers]);
 
-  return players.length < 2 ? (
-    <Warning>No players, go to PLAYERS page</Warning>
-  ) : (
-    <Wrapper>
-      <Bubble>
-        {players.map(({ id, name, song }, index) => (
-          <Item
-            key={id}
-            href={song}
-            target="_blank"
-            rel="noreferrer"
-            className={animateItem && index === 0 ? 'animate' : null}
-          >
-            {name}
-          </Item>
-        ))}
-      </Bubble>
-      {shuffling ? <Button onClick={stopShuffling}>STOP</Button> : <Button onClick={startShuffling}>SHUFFLE</Button>}
-    </Wrapper>
+  return (
+    <PageWrapper>
+      {!players.length ? (
+        <Warning>
+          There are no players, click <Link to="/add-player">here</Link> to add some.
+        </Warning>
+      ) : (
+        <Wrapper>
+          <Bubble>
+            {players.map(({ id, name, song }, index) => (
+              <Item
+                key={id}
+                href={song}
+                target="_blank"
+                rel="noreferrer"
+                className={animateItem && index === 0 ? 'animate' : null}
+              >
+                {name}
+              </Item>
+            ))}
+          </Bubble>
+          {players.length > 1 &&
+            (shuffling ? (
+              <Button onClick={stopShuffling} disabled={disableShuffling}>
+                {disableShuffling ? (
+                  <Icon className="material-icons" $spin>
+                    loop
+                  </Icon>
+                ) : (
+                  'STOP'
+                )}
+              </Button>
+            ) : (
+              <Button onClick={startShuffling}>SHUFFLE</Button>
+            ))}
+        </Wrapper>
+      )}
+    </PageWrapper>
   );
 };
 
