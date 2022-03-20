@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import _ButtonWrapper from '../components/ButtonWrapper';
@@ -40,6 +41,7 @@ const Item = styled.div`
 const Players = () => {
   const [editItem, setEditItem] = useState(null);
   const [players, setPlayers] = useState(getItems());
+  const navigate = useNavigate();
 
   const editPlayer = (id) => {
     const item = players.find((player) => player.id === id);
@@ -56,10 +58,8 @@ const Players = () => {
     setEditItem(null);
   };
 
-  if (!editItem && !players.length) return null;
-
   return (
-    <PageWrapper title="Players List">
+    <PageWrapper title="Players List" actionText="ADD NEW" action={() => navigate('/add-player')}>
       {editItem ? (
         <Form item={editItem} onComplete={saveIsCompleted} />
       ) : (

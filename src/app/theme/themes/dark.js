@@ -11,6 +11,7 @@ const darkTheme = {
     errorPrimary: '#ff606A',
   },
   spacing: {
+    small: '8px',
     normal: '15px',
     large: '30px',
     xlarge: '45px',

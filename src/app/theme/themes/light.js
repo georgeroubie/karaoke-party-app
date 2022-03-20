@@ -11,6 +11,7 @@ const lightTheme = {
     errorPrimary: '#ed2e2e',
   },
   spacing: {
+    small: '8px',
     normal: '15px',
     large: '30px',
     xlarge: '45px',

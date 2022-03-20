@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import _Button from '../components/Button';
 import PageWrapper from '../components/PageWrapper';
 import Warning from '../components/Warning';
 import { getItems } from '../helpers/data';
 import { setAnimation } from '../theme/styles/helpers';
-
-const Wrapper = styled.div``;
 
 const Bubble = styled.div`
   display: flex;
@@ -31,20 +30,15 @@ const Item = styled.a`
   }
 `;
 
-const Button = styled.button`
-  width: 100px;
-  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
-  padding: 5px 10px;
-  text-align: center;
+const Button = styled(_Button)`
+  margin: 0 auto;
   display: block;
-  margin: 20px auto;
-`;
-
-const Icon = styled.span`
   ${({ $spin }) =>
     $spin &&
     css`
-      ${setAnimation('spin infinite 500ms linear')}
+      span {
+        ${setAnimation('spin infinite 500ms linear')}
+      }
     `}
 `;
 
@@ -89,13 +83,13 @@ const Play = () => {
   }, [shuffling, shufflePlayers]);
 
   return (
-    <PageWrapper>
+    <PageWrapper title="Karaoke time, let's play 🥳">
       {!players.length ? (
         <Warning>
-          There are no players, click <Link to="/add-player">here</Link> to add some.
+          There are no players, don't worry <Link to="/add-player">add some</Link>.
         </Warning>
       ) : (
-        <Wrapper>
+        <>
           <Bubble>
             {players.map(({ id, name, song }, index) => (
               <Item
@@ -111,19 +105,17 @@ const Play = () => {
           </Bubble>
           {players.length > 1 &&
             (shuffling ? (
-              <Button onClick={stopShuffling} disabled={disableShuffling}>
-                {disableShuffling ? (
-                  <Icon className="material-icons" $spin>
-                    loop
-                  </Icon>
-                ) : (
-                  'STOP'
-                )}
-              </Button>
+              <Button
+                text={disableShuffling ? null : 'STOP'}
+                icon={disableShuffling ? 'loop' : null}
+                onClick={stopShuffling}
+                disabled={disableShuffling}
+                $spin={disableShuffling}
+              />
             ) : (
-              <Button onClick={startShuffling}>SHUFFLE</Button>
+              <Button text="SHUFFLE" onClick={startShuffling} />
             ))}
-        </Wrapper>
+        </>
       )}
     </PageWrapper>
   );

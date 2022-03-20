@@ -13,7 +13,7 @@ const base = css`
   }
 
   body {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 ${({ theme: { spacing } }) => spacing.large};
   }

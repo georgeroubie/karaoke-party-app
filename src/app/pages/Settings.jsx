@@ -8,7 +8,6 @@ import { LIGHT_THEME_KEY } from '../theme/themes/light';
 const Selection = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
 `;
 
 const Checkbox = styled.input`

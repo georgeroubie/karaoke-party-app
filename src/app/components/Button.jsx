@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
   outline: 0;
@@ -9,9 +9,15 @@ const StyledButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 0;
+  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
   background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
   color: ${({ theme: { colors } }) => colors.textPrimary};
+
+  ${({ $size }) =>
+    $size === 'small' &&
+    css`
+      padding: ${({ theme: { spacing } }) => spacing.small};
+    `}
 
   &:hover,
   &:active {
@@ -19,7 +25,9 @@ const StyledButton = styled.button`
   }
 
   &:disabled {
-    background-color: rgba(${({ theme: { colors } }) => colors.backgroundSecondary}, 0.5);
+    filter: blur(2px);
+    cursor: none;
+    pointer-events: none;
   }
 `;
 
@@ -31,8 +39,8 @@ const Icon = styled.span`
   font-size: 1.3rem;
 `;
 
-const Button = ({ className, text, icon, disabled, onClick }) => (
-  <StyledButton className={className} disabled={disabled} onClick={onClick}>
+const Button = ({ className, size, text, icon, disabled, onClick }) => (
+  <StyledButton className={className} $size={size} disabled={disabled} onClick={onClick}>
     {text && <Text>{text}</Text>}
     {icon && <Icon className="material-icons">{icon}</Icon>}
   </StyledButton>
@@ -40,6 +48,7 @@ const Button = ({ className, text, icon, disabled, onClick }) => (
 
 Button.propTypes = {
   className: PropTypes.string,
+  size: PropTypes.string,
   text: PropTypes.string,
   icon: PropTypes.string,
   disabled: PropTypes.bool,
@@ -48,6 +57,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: null,
+  size: 'normal',
   text: null,
   icon: null,
   disabled: false,
