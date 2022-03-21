@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import _Button from '../components/Button';
 import Form from '../components/Form';
+import NoPlayers from '../components/NoPlayers';
 import PageWrapper from '../components/PageWrapper';
 import { deleteItem, getItems } from '../helpers/data';
 
@@ -55,8 +56,22 @@ const Players = () => {
     setEditItem(null);
   };
 
-  return (
+  const Wrapper = ({ children }) => (
     <PageWrapper title="Players List" actionText="ADD NEW" action={() => navigate('/add-player')}>
+      {children}
+    </PageWrapper>
+  );
+
+  if (!players.length) {
+    return (
+      <Wrapper>
+        <NoPlayers />
+      </Wrapper>
+    );
+  }
+
+  return (
+    <Wrapper>
       {editItem ? (
         <Form item={editItem} onComplete={saveIsCompleted} />
       ) : (
@@ -76,7 +91,7 @@ const Players = () => {
           </tbody>
         </PlayersList>
       )}
-    </PageWrapper>
+    </Wrapper>
   );
 };
 

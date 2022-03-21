@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import _Button from '../components/Button';
+import NoPlayers from '../components/NoPlayers';
 import PageWrapper from '../components/PageWrapper';
-import Warning from '../components/Warning';
 import { getItems } from '../helpers/data';
 import { setAnimation } from '../theme/styles/helpers';
 
@@ -21,9 +20,11 @@ const Item = styled.a`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &.animate {
-    ${setAnimation('winner linear 0.3s infinite')}
-  }
+  ${({ $animate }) =>
+    $animate &&
+    css`
+      ${setAnimation('winner linear 0.3s infinite')}
+    `};
 
   &:hover {
     text-decoration: underline;
@@ -47,7 +48,7 @@ const Button = styled(_Button)`
 const Play = () => {
   const [players, setPlayers] = useState(getItems());
   const [shuffling, setShuffling] = useState(false);
-  const [disableShuffling, setDisableShuffling] = useState(false);
+  const [disabledAction, setDisabledAction] = useState(false);
   const [animateItem, setAnimateItem] = useState(false);
 
   const shufflePlayers = useCallback(() => {
@@ -72,11 +73,11 @@ const Play = () => {
   };
 
   const stopShuffling = () => {
-    setDisableShuffling(true);
+    setDisabledAction(true);
     setTimeout(() => {
       setShuffling(false);
       setAnimateItem(true);
-      setDisableShuffling(false);
+      setDisabledAction(false);
     }, 1500);
   };
 
@@ -84,43 +85,39 @@ const Play = () => {
     if (shuffling) shufflePlayers();
   }, [shuffling, shufflePlayers]);
 
+  const Wrapper = ({ children }) => <PageWrapper title="Karaoke time, let's play 🥳">{children}</PageWrapper>;
+
+  if (!players.length) {
+    return (
+      <Wrapper>
+        <NoPlayers />
+      </Wrapper>
+    );
+  }
+
   return (
-    <PageWrapper title="Karaoke time, let's play 🥳">
-      {!players.length ? (
-        <Warning>
-          No players, don't worry <Link to="/add-player">add some</Link>
-        </Warning>
-      ) : (
-        <>
-          <Bubble>
-            {players.map(({ id, name, song }, index) => (
-              <Item
-                key={id}
-                href={song}
-                target="_blank"
-                rel="noreferrer"
-                className={animateItem && index === 0 ? 'animate' : null}
-              >
-                {name}
-              </Item>
-            ))}
-          </Bubble>
-          {players.length > 1 &&
-            (shuffling ? (
-              <Button
-                text={disableShuffling ? null : 'STOP'}
-                icon={disableShuffling ? 'loop' : null}
-                onClick={stopShuffling}
-                disabled={disableShuffling}
-                $spin={disableShuffling}
-                size="small"
-              />
-            ) : (
-              <Button text="SHUFFLE" onClick={startShuffling} size="small" />
-            ))}
-        </>
-      )}
-    </PageWrapper>
+    <Wrapper>
+      <Bubble>
+        {players.map(({ id, name, song }, index) => (
+          <Item key={id} href={song} target="_blank" rel="noreferrer" $animate={animateItem && index === 0}>
+            {name}
+          </Item>
+        ))}
+      </Bubble>
+      {players.length > 1 &&
+        (shuffling ? (
+          <Button
+            text={disabledAction ? null : 'STOP'}
+            icon={disabledAction ? 'loop' : null}
+            onClick={stopShuffling}
+            disabled={disabledAction}
+            $spin={disabledAction}
+            size="small"
+          />
+        ) : (
+          <Button text="SHUFFLE" onClick={startShuffling} size="small" />
+        ))}
+    </Wrapper>
   );
 };
 

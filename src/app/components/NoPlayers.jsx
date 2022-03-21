@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.p`
@@ -15,10 +15,10 @@ const Wrapper = styled.p`
   }
 `;
 
-const Warning = ({ children }) => <Wrapper>{children}</Wrapper>;
+const NoPlayers = () => (
+  <Wrapper>
+    No players, don't worry <Link to="/add-player">add some</Link>
+  </Wrapper>
+);
 
-Warning.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Warning;
+export default NoPlayers;
