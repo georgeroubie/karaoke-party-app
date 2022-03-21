@@ -9,6 +9,8 @@ const darkTheme = {
     successPrimary: '#00bc8b',
     warningPrimary: '#ffc200',
     errorPrimary: '#ff606A',
+    errorPrimaryText: '#dfdfdf',
+    errorPrimaryHover: '#fa747c',
   },
   spacing: {
     small: '8px',

@@ -12,7 +12,8 @@ const Title = styled.h2`
   align-items: center;
   justify-content: space-between;
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
-  height: 38px;
+  height: 40px;
+  line-height: 40px;
 `;
 
 const PageWrapper = ({ title, action, actionText, children }) => (

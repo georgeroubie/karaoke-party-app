@@ -31,15 +31,17 @@ const Item = styled.a`
 `;
 
 const Button = styled(_Button)`
-  margin: 0 auto;
-  display: block;
+  margin: ${({ theme: { spacing } }) => spacing.normal} auto;
+  width: 150px;
+  display: flex;
+
   ${({ $spin }) =>
     $spin &&
     css`
       span {
         ${setAnimation('spin infinite 500ms linear')}
       }
-    `}
+    `};
 `;
 
 const Play = () => {
@@ -111,9 +113,10 @@ const Play = () => {
                 onClick={stopShuffling}
                 disabled={disableShuffling}
                 $spin={disableShuffling}
+                size="small"
               />
             ) : (
-              <Button text="SHUFFLE" onClick={startShuffling} />
+              <Button text="SHUFFLE" onClick={startShuffling} size="small" />
             ))}
         </>
       )}

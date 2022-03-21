@@ -5,24 +5,40 @@ import styled, { css } from 'styled-components';
 const StyledButton = styled.button`
   outline: 0;
   cursor: pointer;
-  padding: ${({ theme: { spacing } }) => spacing.normal};
+  padding: 0 ${({ theme: { spacing } }) => spacing.normal};
+  height: 50px;
+  line-height: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border: 0;
   background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
   color: ${({ theme: { colors } }) => colors.textPrimary};
-
-  ${({ $size }) =>
-    $size === 'small' &&
-    css`
-      padding: ${({ theme: { spacing } }) => spacing.small};
-    `}
 
   &:hover,
   &:active {
     background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
   }
+
+  ${({ $size }) =>
+    $size === 'small' &&
+    css`
+      height: 40px;
+      line-height: 40px;
+      padding: 0 ${({ theme: { spacing } }) => spacing.small};
+    `}
+
+  ${({ $type }) =>
+    $type === 'error' &&
+    css`
+      color: ${({ theme: { colors } }) => colors.errorPrimaryText};
+      background-color: ${({ theme: { colors } }) => colors.errorPrimary};
+
+      &:hover,
+      &:active {
+        background-color: ${({ theme: { colors } }) => colors.errorPrimaryHover};
+      }
+    `}
 
   &:disabled {
     filter: blur(2px);
@@ -33,14 +49,15 @@ const StyledButton = styled.button`
 
 const Text = styled.span`
   font-size: 0.9rem;
+  font-weight: 500;
 `;
 
 const Icon = styled.span`
   font-size: 1.3rem;
 `;
 
-const Button = ({ className, size, text, icon, disabled, onClick }) => (
-  <StyledButton className={className} $size={size} disabled={disabled} onClick={onClick}>
+const Button = ({ className, size, type, text, icon, disabled, onClick }) => (
+  <StyledButton className={className} $size={size} $type={type} disabled={disabled} onClick={onClick}>
     {text && <Text>{text}</Text>}
     {icon && <Icon className="material-icons">{icon}</Icon>}
   </StyledButton>
@@ -49,6 +66,7 @@ const Button = ({ className, size, text, icon, disabled, onClick }) => (
 Button.propTypes = {
   className: PropTypes.string,
   size: PropTypes.string,
+  type: PropTypes.string,
   text: PropTypes.string,
   icon: PropTypes.string,
   disabled: PropTypes.bool,
@@ -57,7 +75,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: null,
-  size: 'normal',
+  size: null,
+  type: null,
   text: null,
   icon: null,
   disabled: false,

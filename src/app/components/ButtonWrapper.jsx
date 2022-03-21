@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   button {
     flex-grow: 1;
     flex-basis: 0;
-    border: 0;
 
     &:not(:last-child) {
       border-right: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
