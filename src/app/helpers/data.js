@@ -47,4 +47,9 @@ const deleteItem = (id) => {
   saveItems(items.filter((item) => item.id !== id));
 };
 
-export { saveItem, getItems, deleteItem };
+const deleteData = () => {
+  localStorage.removeItem('data');
+  window.location.href = '/';
+};
+
+export { saveItem, getItems, deleteItem, deleteData };

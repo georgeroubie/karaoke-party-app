@@ -56,7 +56,7 @@ const Text = styled.span`
 const items = [
   { icon: 'videogame_asset', text: 'PLAY', url: '/' },
   { icon: 'people', text: 'PLAYERS', url: '/players' },
-  { icon: 'settings', text: 'SETTINGS', url: '/settings' },
+  { icon: 'info', text: 'INFO', url: '/info' },
 ];
 
 const Menu = () => (

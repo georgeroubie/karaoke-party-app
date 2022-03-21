@@ -8,10 +8,7 @@ const typography = css`
     background-color: ${({ theme: { colors } }) => colors.backgroundPrimary};
     color: ${({ theme: { colors } }) => colors.textPrimary};
     font-size: 16px;
-  }
-
-  code {
-    font-family: Consolas, monospace;
+    line-height: 1.4rem;
   }
 
   a {
