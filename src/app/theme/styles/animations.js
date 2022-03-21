@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const animations = css`
   @keyframes winner {
     from {
-      background-color: ${({ theme: { colors } }) => colors.successPrimary};
+      background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};
     }
     to {
       background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};

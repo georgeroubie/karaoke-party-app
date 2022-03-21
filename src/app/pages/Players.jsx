@@ -69,7 +69,7 @@ const Players = () => {
                   <Button icon="edit" onClick={() => editPlayer(id)} />
                 </ActionCell>
                 <ActionCell>
-                  <Button icon="delete" type="error" onClick={() => deletePlayer(id)} />
+                  <Button icon="delete" type="danger" onClick={() => deletePlayer(id)} />
                 </ActionCell>
               </PlayerListItem>
             ))}

@@ -88,7 +88,7 @@ const Play = () => {
     <PageWrapper title="Karaoke time, let's play 🥳">
       {!players.length ? (
         <Warning>
-          There are no players, don't worry <Link to="/add-player">add some</Link>.
+          No players, don't worry <Link to="/add-player">add some</Link>
         </Warning>
       ) : (
         <>

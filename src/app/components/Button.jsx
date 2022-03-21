@@ -29,14 +29,14 @@ const StyledButton = styled.button`
     `}
 
   ${({ $type }) =>
-    $type === 'error' &&
+    $type === 'danger' &&
     css`
-      color: ${({ theme: { colors } }) => colors.errorPrimaryText};
-      background-color: ${({ theme: { colors } }) => colors.errorPrimary};
+      color: ${({ theme: { colors } }) => colors.dangerTextPrimary};
+      background-color: ${({ theme: { colors } }) => colors.dangerBackgroundPrimary};
 
       &:hover,
       &:active {
-        background-color: ${({ theme: { colors } }) => colors.errorPrimaryHover};
+        background-color: ${({ theme: { colors } }) => colors.dangerBackgroundSecondary};
       }
     `}
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import { NavLink as _NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import Logo from '../svg/Logo';
 
 const Title = styled.h1`
-  font-family: 'Press Start 2P', cursive;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  text-align: center;
   user-select: none;
   margin: ${({ theme: { spacing } }) => spacing.xlarge} auto;
 `;
@@ -64,7 +61,9 @@ const items = [
 
 const Menu = () => (
   <>
-    <Title onClick={() => (window.location.href = '/')}>Karaoke Party</Title>
+    <Title onClick={() => (window.location.href = '/')}>
+      <Logo />
+    </Title>
     <Nav>
       {items.map(({ icon, text, url }) => (
         <NavLink to={url} key={icon} className={({ isActive }) => (isActive ? 'active' : null)}>
