@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import Form from '../components/Form';
 import NoPlayers from '../components/NoPlayers';
 import PageWrapper from '../components/PageWrapper';
-import { deleteItem, getItems } from '../helpers/data';
+import { AppContext } from '../state/Context';
 
 const PlayersList = styled.table`
   width: 100%;
@@ -33,22 +33,15 @@ const PlayerListItem = styled.tr`
 `;
 
 const Players = () => {
+  const { state, deletePlayer } = useContext(AppContext);
   const [editItem, setEditItem] = useState(null);
-  const [players, setPlayers] = useState(getItems());
   const navigate = useNavigate();
 
   const editPlayer = (id) => {
-    const item = players.find((player) => player.id === id);
-    setEditItem(item);
-  };
-
-  const deletePlayer = (id) => {
-    deleteItem(id);
-    setPlayers(getItems());
+    setEditItem(state.playersList.find((player) => player.id === id));
   };
 
   const saveIsCompleted = () => {
-    setPlayers(getItems());
     setEditItem(null);
   };
 
@@ -58,7 +51,7 @@ const Players = () => {
     </PageWrapper>
   );
 
-  if (!players.length) {
+  if (!state.playersList.length) {
     return (
       <Wrapper>
         <NoPlayers />
@@ -73,7 +66,7 @@ const Players = () => {
       ) : (
         <PlayersList>
           <tbody>
-            {players.map(({ id, name }) => (
+            {state.playersList.map(({ id, name }) => (
               <PlayerListItem key={id}>
                 <PlayerNameCell>{name}</PlayerNameCell>
                 <ActionCell>

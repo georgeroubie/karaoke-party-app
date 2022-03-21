@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { saveItem } from '../helpers/data';
+import { AppContext } from '../state/Context';
 import Button from './Button';
 import ButtonWrapper from './ButtonWrapper';
 import _Input from './Input';
@@ -12,11 +12,16 @@ const Input = styled(_Input)`
 
 const Form = ({ item, onComplete }) => {
   const nameInputRef = useRef(null);
+  const { addPlayer, editPlayer } = useContext(AppContext);
   const [name, setName] = useState(item.name);
   const [song, setSong] = useState(item.song);
 
   const save = () => {
-    saveItem(item.id, name, song);
+    if (!item.id) {
+      addPlayer({ id: Date.now(), name, song });
+    } else {
+      editPlayer({ id: item.id, name, song });
+    }
     onComplete();
   };
 
@@ -66,7 +71,7 @@ Form.propTypes = {
 
 Form.defaultProps = {
   item: {
-    id: -1,
+    id: null,
     name: '',
     song: '',
   },

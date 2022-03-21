@@ -1,12 +1,9 @@
+import { getSavedTheme } from '../../helpers/storage';
 import { DARK_THEME_KEY } from './dark';
 import { LIGHT_THEME_KEY } from './light';
 
-const SAVED_THEME_KEY = 'user_selected_theme';
-
-const saveThemeSelection = (theme) => localStorage.setItem(SAVED_THEME_KEY, theme);
-
 const getCurrentTheme = () => {
-  const savedTheme = localStorage.getItem(SAVED_THEME_KEY);
+  const savedTheme = getSavedTheme();
   if (savedTheme) {
     return savedTheme;
   } else if (window.matchMedia) {
@@ -19,4 +16,4 @@ const getCurrentTheme = () => {
   return DARK_THEME_KEY;
 };
 
-export { getCurrentTheme, saveThemeSelection };
+export { getCurrentTheme };

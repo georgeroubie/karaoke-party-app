@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import _Button from '../components/Button';
 import NoPlayers from '../components/NoPlayers';
 import PageWrapper from '../components/PageWrapper';
-import { getItems } from '../helpers/data';
+import { AppContext } from '../state/Context';
 import { setAnimation } from '../theme/styles/helpers';
 
 const Bubble = styled.div`
@@ -40,13 +40,14 @@ const Button = styled(_Button)`
     $spin &&
     css`
       span {
-        ${setAnimation('spin infinite 500ms linear')}
+        ${setAnimation('spin infinite 600ms linear')}
       }
     `};
 `;
 
 const Play = () => {
-  const [players, setPlayers] = useState(getItems());
+  const { state } = useContext(AppContext);
+  const [players, setPlayers] = useState(state.playersList);
   const [shuffling, setShuffling] = useState(false);
   const [disabledAction, setDisabledAction] = useState(false);
   const [animateItem, setAnimateItem] = useState(false);
@@ -68,9 +69,9 @@ const Play = () => {
     }
   }, [animateItem]);
 
-  const startShuffling = () => {
-    setShuffling(true);
-  };
+  useEffect(() => {
+    setPlayers(state.playersList);
+  }, [state.playersList]);
 
   const stopShuffling = () => {
     setDisabledAction(true);
@@ -115,7 +116,7 @@ const Play = () => {
             size="small"
           />
         ) : (
-          <Button text="SHUFFLE" onClick={startShuffling} size="small" />
+          <Button text="SHUFFLE" onClick={() => setShuffling(true)} size="small" />
         ))}
     </Wrapper>
   );

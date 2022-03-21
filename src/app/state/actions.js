@@ -1,1 +1,4 @@
 export const UPDATE_THEME_SELECTION = 'UPDATE_THEME_SELECTION';
+export const ADD_PLAYER = 'ADD_PLAYER';
+export const DELETE_PLAYER = 'DELETE_PLAYER';
+export const EDIT_PLAYER = 'EDIT_PLAYER';

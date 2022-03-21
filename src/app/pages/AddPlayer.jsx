@@ -5,6 +5,7 @@ import PageWrapper from '../components/PageWrapper';
 
 const AddPlayer = () => {
   const navigate = useNavigate();
+
   return (
     <PageWrapper title="Add a new player">
       <Form onComplete={() => navigate('/players')} />

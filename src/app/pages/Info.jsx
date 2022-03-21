@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import _Button from '../components/Button';
 import PageWrapper from '../components/PageWrapper';
-import { deleteData } from '../helpers/data';
+import { deleteAllData } from '../helpers/storage';
 import { AppContext } from '../state/Context';
 import { DARK_THEME_KEY } from '../theme/themes/dark';
 import { LIGHT_THEME_KEY } from '../theme/themes/light';
@@ -72,8 +72,8 @@ const Info = () => {
         device. In case you clear the browser cache all the players will be deleted. You can also delete manually all
         the data.
         <br />
-        {!showDelete && <Button type="danger" text="DELETE DATA" onClick={() => setShowDelete(true)} />}
-        {showDelete && <Button type="danger" text="ARE YOU SURE?" onClick={deleteData} />}
+        {!showDelete && <Button type="danger" text="DELETE ALL DATA" onClick={() => setShowDelete(true)} />}
+        {showDelete && <Button type="danger" text="ARE YOU SURE?" onClick={deleteAllData} />}
       </Text>
 
       <Title>Settings</Title>
