@@ -16,13 +16,14 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = forwardRef(({ className, value, type, placeholder, onChange }, ref) => (
+const Input = forwardRef(({ className, value, type, placeholder, onKeyDown, onChange }, ref) => (
   <StyledInput
     className={className}
     value={value}
     type={type}
     placeholder={placeholder}
     onChange={onChange}
+    onKeyDown={onKeyDown}
     ref={ref}
   />
 ));
@@ -33,6 +34,7 @@ Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
+  onKeyDown: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -41,6 +43,7 @@ Input.defaultProps = {
   type: 'text',
   placeholder: null,
   onChange: () => {},
+  onKeyDown: () => {},
 };
 
 export default Input;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import _Button from './Button';
 
 const Wrapper = styled.main`
   padding-bottom: ${({ theme: { spacing } }) => spacing.xlarge};
@@ -14,6 +14,10 @@ const Title = styled.h2`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
   height: 40px;
   line-height: 40px;
+`;
+
+const Button = styled(_Button)`
+  width: 110px;
 `;
 
 const PageWrapper = ({ title, action, actionText, children }) => (

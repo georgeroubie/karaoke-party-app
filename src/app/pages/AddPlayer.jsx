@@ -7,7 +7,7 @@ const AddPlayer = () => {
   const navigate = useNavigate();
   return (
     <PageWrapper title="Add a new player">
-      <Form showAddAnother onComplete={() => navigate('/players')} />
+      <Form onComplete={() => navigate('/players')} />
     </PageWrapper>
   );
 };

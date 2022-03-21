@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import _Button from '../components/Button';
+import Button from '../components/Button';
 import Form from '../components/Form';
 import NoPlayers from '../components/NoPlayers';
 import PageWrapper from '../components/PageWrapper';
@@ -32,10 +32,6 @@ const PlayerListItem = styled.tr`
   }
 `;
 
-const Button = styled(_Button)`
-  border: 0;
-`;
-
 const Players = () => {
   const [editItem, setEditItem] = useState(null);
   const [players, setPlayers] = useState(getItems());
@@ -57,7 +53,7 @@ const Players = () => {
   };
 
   const Wrapper = ({ children }) => (
-    <PageWrapper title="Players List" actionText="ADD NEW" action={() => navigate('/add-player')}>
+    <PageWrapper title="Players List" actionText="ADD" action={() => navigate('/add-player')}>
       {children}
     </PageWrapper>
   );

@@ -10,20 +10,20 @@ const Input = styled(_Input)`
   margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
-const Form = ({ item, showAddAnother, onComplete }) => {
+const Form = ({ item, onComplete }) => {
   const nameInputRef = useRef(null);
   const [name, setName] = useState(item.name);
   const [song, setSong] = useState(item.song);
 
-  const save = (successCallback) => {
+  const save = () => {
     saveItem(item.id, name, song);
-    successCallback();
+    onComplete();
   };
 
-  const resetForm = () => {
-    setName('');
-    setSong('');
-    nameInputRef?.current.focus();
+  const handleKeyDown = ({ code }) => {
+    if (code === 'Enter' && name && song) {
+      save();
+    }
   };
 
   useEffect(() => {
@@ -38,19 +38,18 @@ const Form = ({ item, showAddAnother, onComplete }) => {
         value={name}
         onChange={({ target }) => setName(target.value)}
         ref={nameInputRef}
+        onKeyDown={handleKeyDown}
       />
       <Input
         type="text"
         placeholder="Song url (e.g. from YouTube)"
         value={song}
         onChange={({ target }) => setSong(target.value)}
+        onKeyDown={handleKeyDown}
       />
       <ButtonWrapper>
         <Button text="CANCEL" onClick={onComplete} />
-        <Button text="SAVE" disabled={!name || !song} onClick={() => save(onComplete)} />
-        {showAddAnother && (
-          <Button text="SAVE &amp; ADD NEW" disabled={!name || !song} onClick={() => save(resetForm)} />
-        )}
+        <Button text="SAVE" disabled={!name || !song} onClick={() => save()} />
       </ButtonWrapper>
     </>
   );
@@ -62,7 +61,6 @@ Form.propTypes = {
     name: PropTypes.string,
     song: PropTypes.string,
   }),
-  showAddAnother: PropTypes.bool,
   onComplete: PropTypes.func.isRequired,
 };
 
@@ -72,7 +70,6 @@ Form.defaultProps = {
     name: '',
     song: '',
   },
-  showAddAnother: false,
 };
 
 export default Form;
