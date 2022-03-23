@@ -1,3 +1,11 @@
+# General information
+
+[Karaoke Party web application](http://karaoke-party.online) can create a list of players with their songs and randomly choose who will sing next.
+
+If you like it give the repository a star and follow me on [LinkedIn](https://www.linkedin.com/in/georgeroubie) and  [Medium](https://george-roubie.medium.com). 
+
+Thank you for using it, have fun!
+  
 # Development
 
 ## Requirements
