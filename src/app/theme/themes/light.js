@@ -23,6 +23,9 @@ const lightTheme = {
     large: '30px',
     xlarge: '45px',
   },
+  screens: {
+    medium: '600px',
+  },
 };
 
 export { lightTheme, LIGHT_THEME_KEY };

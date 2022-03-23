@@ -13,9 +13,13 @@ const base = css`
   }
 
   body {
-    max-width: 600px;
+    max-width: ${({ theme: { screens } }) => screens.medium};
     margin: 0 auto;
-    padding: 0 ${({ theme: { spacing } }) => spacing.large};
+    padding: 0 ${({ theme: { spacing } }) => spacing.normal};
+
+    @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
+      padding: 0 ${({ theme: { spacing } }) => spacing.large};
+    }
   }
 
   ul {

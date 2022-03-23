@@ -23,6 +23,9 @@ const darkTheme = {
     large: '30px',
     xlarge: '45px',
   },
+  screens: {
+    medium: '600px',
+  },
 };
 
 export { darkTheme, DARK_THEME_KEY };

@@ -9,7 +9,7 @@ const ListItems = styled.ul`
   grid-template-columns: 1fr;
   gap: ${({ theme: { spacing } }) => spacing.small};
 
-  @media (min-width: 600px) {
+  @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
     grid-template-columns: 1fr 1fr;
   }
 `;

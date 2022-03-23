@@ -5,7 +5,11 @@ import Logo from '../svg/Logo';
 
 const Title = styled.h1`
   user-select: none;
-  margin: ${({ theme: { spacing } }) => spacing.xlarge} auto;
+  margin: ${({ theme: { spacing } }) => spacing.large} auto;
+
+  @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
+    margin: ${({ theme: { spacing } }) => spacing.xlarge} auto;
+  }
 `;
 
 const NavLink = styled(_NavLink)`
@@ -45,7 +49,7 @@ const Icon = styled.span`
 const Text = styled.span`
   display: none;
 
-  @media (min-width: 600px) {
+  @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
     display: inline-block;
     margin-left: ${({ theme: { spacing } }) => spacing.normal};
   }
