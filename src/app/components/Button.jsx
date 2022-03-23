@@ -12,12 +12,12 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   border: 0;
-  background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
-  color: ${({ theme: { colors } }) => colors.textPrimary};
+  background-color: ${({ theme: { colors } }) => colors.buttonBackgroundPrimary};
+  color: ${({ theme: { colors } }) => colors.buttonTextPrimary};
 
   &:hover,
   &:active {
-    background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
+    background-color: ${({ theme: { colors } }) => colors.buttonBackgroundPrimary};
   }
 
   ${({ $size }) =>

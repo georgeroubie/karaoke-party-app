@@ -18,9 +18,9 @@ const Form = ({ item, onComplete }) => {
 
   const save = () => {
     if (!item.id) {
-      addPlayer({ id: Date.now(), name, song });
+      addPlayer({ id: Date.now(), name, song, active: false });
     } else {
-      editPlayer({ id: item.id, name, song });
+      editPlayer({ id: item.id, name, song, active: false });
     }
     onComplete();
   };

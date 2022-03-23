@@ -17,6 +17,12 @@ const base = css`
     margin: 0 auto;
     padding: 0 ${({ theme: { spacing } }) => spacing.large};
   }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 `;
 
 export { base };

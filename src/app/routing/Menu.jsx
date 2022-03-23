@@ -45,7 +45,7 @@ const Icon = styled.span`
 const Text = styled.span`
   display: none;
 
-  @media (min-width: 750px) {
+  @media (min-width: 600px) {
     & {
       display: inline-block;
       margin-left: ${({ theme: { spacing } }) => spacing.normal};
