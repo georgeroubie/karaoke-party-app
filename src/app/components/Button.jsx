@@ -17,7 +17,7 @@ const StyledButton = styled.button`
 
   &:hover,
   &:active {
-    background-color: ${({ theme: { colors } }) => colors.buttonBackgroundPrimary};
+    background-color: ${({ theme: { colors } }) => colors.buttonBackgroundSecondary};
   }
 
   ${({ $size }) =>

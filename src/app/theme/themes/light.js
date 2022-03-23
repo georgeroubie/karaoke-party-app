@@ -9,6 +9,7 @@ const lightTheme = {
     textPrimary: '#333333',
     buttonBackgroundPrimary: '#000000',
     buttonTextPrimary: '#ffffff',
+    buttonBackgroundSecondary: '#272727',
     successBackgroundPrimary: '#00bc8b',
     warningBackgroundPrimary: '#ffc200',
     warningTextPrimary: '#333333',
