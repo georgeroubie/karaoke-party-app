@@ -9,8 +9,6 @@ import { LIGHT_THEME_KEY } from '../theme/themes/light';
 
 const Title = styled.h2`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
-  height: 40px;
-  line-height: 40px;
 `;
 
 const Text = styled.p`

@@ -5,8 +5,13 @@ import { AppContext } from '../../state/Context';
 import { setAnimation } from '../../theme/styles/helpers';
 
 const ListItems = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${({ theme: { spacing } }) => spacing.small};
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const Actions = styled.div`
@@ -33,18 +38,12 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: ${({ theme: { spacing } }) => spacing.small};
 
   ${({ $animate }) =>
     $animate &&
     css`
       ${setAnimation('winner 0.3s linear 10')}
     `};
-
-  @media (min-width: 600px) {
-    width: 50%;
-  }
 
   ${Button} {
     width: 40px;
@@ -89,15 +88,9 @@ const List = () => {
   const startShuffling = () => {
     setShuffle(true);
     animateInterval.current = setInterval(() => {
+      const clonedPlayers = players.map((player) => ({ ...player, active: false }));
       const randomIndex = Math.floor(Math.random() * players.length);
-      const findPrevActiveIndex = players.findIndex((player) => player.active);
-      if (randomIndex === findPrevActiveIndex) return;
-
-      const clonedPlayers = players.map((player) => ({ ...player }));
       clonedPlayers[randomIndex].active = true;
-      if (findPrevActiveIndex !== -1) {
-        clonedPlayers[findPrevActiveIndex].active = false;
-      }
       setPlayers(clonedPlayers);
     }, 50);
   };
@@ -126,18 +119,19 @@ const List = () => {
           </Item>
         ))}
       </ListItems>
-      {shuffle ? (
-        <Button
-          text={disabledAction ? null : 'STOP'}
-          icon={disabledAction ? 'loop' : null}
-          onClick={stopShuffling}
-          disabled={disabledAction}
-          $spin={disabledAction}
-          size="small"
-        />
-      ) : (
-        <Button text="SHUFFLE" onClick={startShuffling} size="small" />
-      )}
+      {players.length > 1 &&
+        (shuffle ? (
+          <Button
+            text={disabledAction ? null : 'STOP'}
+            icon={disabledAction ? 'loop' : null}
+            onClick={stopShuffling}
+            disabled={disabledAction}
+            $spin={disabledAction}
+            size="small"
+          />
+        ) : (
+          <Button text="SHUFFLE" onClick={startShuffling} size="small" />
+        ))}
     </>
   );
 };

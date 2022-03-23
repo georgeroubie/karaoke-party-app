@@ -14,6 +14,11 @@ const typography = css`
   a {
     color: ${({ theme: { colors } }) => colors.textPrimary};
   }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
 `;
 
 export { typography };

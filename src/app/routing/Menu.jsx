@@ -46,10 +46,8 @@ const Text = styled.span`
   display: none;
 
   @media (min-width: 600px) {
-    & {
-      display: inline-block;
-      margin-left: ${({ theme: { spacing } }) => spacing.normal};
-    }
+    display: inline-block;
+    margin-left: ${({ theme: { spacing } }) => spacing.normal};
   }
 `;
 
