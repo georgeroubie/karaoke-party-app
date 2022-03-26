@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink as _NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../svg/Logo';
+import _Icon from './../components/Icon';
 
 const Title = styled.h1`
   user-select: none;
@@ -42,8 +43,9 @@ const Nav = styled.nav`
   }
 `;
 
-const Icon = styled.span`
-  font-size: 2rem;
+const Icon = styled(_Icon)`
+  width: 2rem;
+  height: auto;
 `;
 
 const Text = styled.span`
@@ -56,7 +58,7 @@ const Text = styled.span`
 `;
 
 const items = [
-  { icon: 'videogame_asset', text: 'PLAY', url: '/' },
+  { icon: 'video_game_controller', text: 'PLAY', url: '/' },
   { icon: 'people', text: 'PLAYERS', url: '/players' },
   { icon: 'info', text: 'INFO', url: '/info' },
 ];
@@ -69,7 +71,7 @@ const Menu = () => (
     <Nav>
       {items.map(({ icon, text, url }) => (
         <NavLink to={url} key={icon} className={({ isActive }) => (isActive ? 'active' : null)}>
-          <Icon className="material-icons">{icon}</Icon>
+          <Icon type={icon} />
           <Text>{text}</Text>
         </NavLink>
       ))}

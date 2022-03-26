@@ -28,7 +28,7 @@ const Button = styled(_Button)`
   ${({ $spin }) =>
     $spin &&
     css`
-      span {
+      svg {
         ${setAnimation('spin infinite 600ms linear')}
       }
     `};
@@ -113,7 +113,7 @@ const List = () => {
               {name}
             </Link>
             <Actions>
-              <Button size="small" icon="mic_external_on" onClick={() => window.open(song, '_blank')} />
+              <Button size="small" icon="mic" onClick={() => window.open(song, '_blank')} />
               <Button size="small" type="danger" icon="delete" onClick={() => deletePlayer(id)} />
             </Actions>
           </Item>
@@ -123,7 +123,7 @@ const List = () => {
         (shuffle ? (
           <Button
             text={disabledAction ? null : 'STOP'}
-            icon={disabledAction ? 'loop' : null}
+            icon={disabledAction ? 'loader' : null}
             onClick={stopShuffling}
             disabled={disabledAction}
             $spin={disabledAction}

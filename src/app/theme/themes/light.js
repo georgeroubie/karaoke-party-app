@@ -4,7 +4,7 @@ const lightTheme = {
   colors: {
     backgroundPrimary: '#ffffff',
     backgroundSecondary: '#dedede',
-    borderPrimary: '#000000',
+    borderPrimary: '#dedede',
     borderSecondary: '#000000',
     textPrimary: '#333333',
     buttonBackgroundPrimary: '#000000',

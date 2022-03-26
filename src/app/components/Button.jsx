@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import _Icon from './../components/Icon';
 
 const StyledButton = styled.button`
   outline: 0;
@@ -52,14 +53,15 @@ const Text = styled.span`
   font-weight: 500;
 `;
 
-const Icon = styled.span`
-  font-size: 1.3rem;
+const Icon = styled(_Icon)`
+  width: 1.3rem;
+  height: auto;
 `;
 
 const Button = ({ className, size, type, text, icon, disabled, onClick }) => (
   <StyledButton className={className} $size={size} $type={type} disabled={disabled} onClick={onClick}>
     {text && <Text>{text}</Text>}
-    {icon && <Icon className="material-icons">{icon}</Icon>}
+    {icon && <Icon type={icon} />}
   </StyledButton>
 );
 
