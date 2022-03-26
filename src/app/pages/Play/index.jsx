@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import NoPlayers from '../../components/NoPlayers';
 import PageWrapper from '../../components/PageWrapper';
 import { AppContext } from '../../state/Context';

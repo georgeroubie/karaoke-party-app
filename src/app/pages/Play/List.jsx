@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import _Button from '../../components/Button';
 import { AppContext } from '../../state/Context';

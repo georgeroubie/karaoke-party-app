@@ -1,4 +1,3 @@
-import React from 'react';
 import Menu from './routing/Menu';
 import Routing from './routing/Routing';
 import { AppProvider } from './state/Context';

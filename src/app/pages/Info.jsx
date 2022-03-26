@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import _Button from '../components/Button';
 import PageWrapper from '../components/PageWrapper';

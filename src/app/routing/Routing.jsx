@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddPlayer from '../pages/AddPlayer';
 import Info from '../pages/Info';

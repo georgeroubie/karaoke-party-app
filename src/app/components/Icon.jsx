@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import Edit from '../svg/Edit';
 import Info from '../svg/Info';
 import Loader from '../svg/Loader';
