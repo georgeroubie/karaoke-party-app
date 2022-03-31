@@ -1,6 +1,6 @@
 # General information
 
-[Karaoke Party web application](http://karaoke-party.online) can create a list of players with their songs from YouTube and randomly choose who will sing next.
+[Karaoke Party web application](https://karaoke-party.online) can create a list of players with their songs from YouTube and randomly choose who will sing next.
 
 If you like it give the repository a star and follow me on [LinkedIn](https://www.linkedin.com/in/georgeroubie) and  [Medium](https://george-roubie.medium.com). 
 

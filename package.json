@@ -1,6 +1,6 @@
 {
   "name": "karaoke-party-app",
-  "homepage": "http://karaoke-party.online",
+  "homepage": "https://karaoke-party.online",
   "version": "2.1.0",
   "private": true,
   "dependencies": {
