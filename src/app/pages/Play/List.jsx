@@ -2,7 +2,9 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import _Button from '../../components/Button';
 import { AppContext } from '../../state/Context';
-import { setAnimation } from '../../theme/styles/helpers';
+import { setAnimation, textTruncate } from '../../theme/styles/helpers';
+
+const YOUTUBE_SEARCH = 'https://www.youtube.com/results?search_query=';
 
 const ListItems = styled.ul`
   display: grid;
@@ -24,14 +26,6 @@ const Button = styled(_Button)`
   margin: ${({ theme: { spacing } }) => spacing.large} auto 0;
   width: 150px;
   display: flex;
-
-  ${({ $spin }) =>
-    $spin &&
-    css`
-      svg {
-        ${setAnimation('spin infinite 600ms linear')}
-      }
-    `};
 `;
 
 const Item = styled.li`
@@ -43,6 +37,10 @@ const Item = styled.li`
     $animate &&
     css`
       ${setAnimation('winner 0.3s linear 10')}
+
+      @media (prefers-reduced-motion: reduce) {
+        background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};
+      }
     `};
 
   ${Button} {
@@ -52,10 +50,8 @@ const Item = styled.li`
 `;
 
 const Link = styled.a`
+  ${textTruncate}
   font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 100%;
   height: 40px;
   line-height: 40px;
@@ -107,17 +103,28 @@ const List = () => {
   return (
     <>
       <ListItems>
-        {players.map(({ id, name, song, active }) => (
-          <Item key={id} $animate={active}>
-            <Link href={song} target="_blank" rel="noreferrer">
-              {name}
-            </Link>
-            <Actions>
-              <Button size="small" icon="mic" onClick={() => window.open(song, '_blank')} />
-              <Button size="small" type="danger" icon="delete" onClick={() => deletePlayer(id)} />
-            </Actions>
-          </Item>
-        ))}
+        {players.map(({ id, name, song, active }) => {
+          let songUrl;
+          if (song.startsWith('http')) {
+            songUrl = song;
+          } else {
+            songUrl = `${YOUTUBE_SEARCH}${encodeURIComponent(song)}`;
+            if (!song.includes('karaoke')) {
+              songUrl += '%20karaoke';
+            }
+          }
+          return (
+            <Item key={id} $animate={active}>
+              <Link href={songUrl} target="_blank" rel="noreferrer">
+                {name}
+              </Link>
+              <Actions>
+                <Button size="small" icon="mic" onClick={() => window.open(songUrl, '_blank')} />
+                <Button size="small" type="danger" icon="delete" onClick={() => deletePlayer(id)} />
+              </Actions>
+            </Item>
+          );
+        })}
       </ListItems>
       {players.length > 1 &&
         (shuffle ? (
@@ -126,7 +133,7 @@ const List = () => {
             icon={disabledAction ? 'loader' : null}
             onClick={stopShuffling}
             disabled={disabledAction}
-            $spin={disabledAction}
+            iconSpin
             size="small"
           />
         ) : (

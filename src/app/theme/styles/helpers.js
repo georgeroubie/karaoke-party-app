@@ -12,4 +12,10 @@ const setTransition = (value) => css`
   }
 `;
 
-export { setAnimation, setTransition };
+const textTruncate = css`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export { setAnimation, setTransition, textTruncate };

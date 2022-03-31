@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { setAnimation } from '../theme/styles/helpers';
 import _Icon from './../components/Icon';
 
 const StyledButton = styled.button`
@@ -55,12 +56,18 @@ const Text = styled.span`
 const Icon = styled(_Icon)`
   width: 1.3rem;
   height: auto;
+
+  ${({ $spin }) =>
+    $spin &&
+    css`
+      ${setAnimation('spin infinite 600ms linear')}
+    `};
 `;
 
-const Button = ({ className, size, type, text, icon, disabled, onClick }) => (
+const Button = ({ className, size, type, text, icon, iconSpin, disabled, onClick }) => (
   <StyledButton className={className} $size={size} $type={type} disabled={disabled} onClick={onClick}>
     {text && <Text>{text}</Text>}
-    {icon && <Icon type={icon} />}
+    {icon && <Icon type={icon} $spin={iconSpin} />}
   </StyledButton>
 );
 
@@ -70,6 +77,7 @@ Button.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
   icon: PropTypes.string,
+  iconSpin: PropTypes.bool,
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
@@ -80,6 +88,7 @@ Button.defaultProps = {
   type: null,
   text: null,
   icon: null,
+  iconSpin: false,
   disabled: false,
 };
 

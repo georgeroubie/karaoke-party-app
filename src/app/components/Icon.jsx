@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
+import Cancel from '../svg/Cancel';
+import Check from '../svg/Check';
 import Edit from '../svg/Edit';
 import Info from '../svg/Info';
 import Loader from '../svg/Loader';
+import Search from '../svg/Search';
 import Delete from './../svg/Delete';
 import Mic from './../svg/Mic';
 import People from './../svg/People';
@@ -23,6 +26,12 @@ const Icon = ({ type, className }) => {
       return <VideoGameController className={className} />;
     case 'loader':
       return <Loader className={className} />;
+    case 'check':
+      return <Check className={className} />;
+    case 'search':
+      return <Search className={className} />;
+    case 'cancel':
+      return <Cancel className={className} />;
     default:
       return null;
   }

@@ -6,6 +6,7 @@ import Form from '../components/Form';
 import NoPlayers from '../components/NoPlayers';
 import PageWrapper from '../components/PageWrapper';
 import { AppContext } from '../state/Context';
+import { textTruncate } from '../theme/styles/helpers';
 
 const PlayersList = styled.table`
   width: 100%;
@@ -15,9 +16,7 @@ const PlayersList = styled.table`
 `;
 
 const PlayerNameCell = styled.td`
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  ${textTruncate}
   padding: 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 
@@ -46,7 +45,11 @@ const Players = () => {
   };
 
   const Wrapper = ({ children }) => (
-    <PageWrapper title="Players List" actionText="ADD" action={() => navigate('/add-player')}>
+    <PageWrapper
+      title={editItem ? 'Edit player' : 'Players List'}
+      actionText={editItem ? null : 'ADD'}
+      action={() => navigate('/add-player')}
+    >
       {children}
     </PageWrapper>
   );

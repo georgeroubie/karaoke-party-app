@@ -3,11 +3,17 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { AppContext } from '../state/Context';
 import Button from './Button';
+import _ButtonInput from './ButtonInput';
 import ButtonWrapper from './ButtonWrapper';
-import _Input from './Input';
+import Input from './Input';
+import SearchSong from './SearchSong';
 
-const Input = styled(_Input)`
-  margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
+const ButtonInput = styled(_ButtonInput)`
+  margin: ${({ theme: { spacing } }) => spacing.normal} auto;
+
+  span {
+    font-size: 1.6rem;
+  }
 `;
 
 const Form = ({ item, onComplete }) => {
@@ -15,14 +21,18 @@ const Form = ({ item, onComplete }) => {
   const { addPlayer, editPlayer } = useContext(AppContext);
   const [name, setName] = useState(item.name);
   const [song, setSong] = useState(item.song);
+  const [showYouTubeWizard, setShowYouTubeWizard] = useState(false);
 
   const save = () => {
-    if (!item.id) {
-      addPlayer({ id: Date.now(), name, song, active: false });
-    } else {
-      editPlayer({ id: item.id, name, song, active: false });
-    }
+    const isEdit = !!item.id;
+    const player = { id: isEdit ? item.id : Date.now(), name, song, active: false };
+    isEdit ? editPlayer(player) : addPlayer(player);
     onComplete();
+  };
+
+  const updateSongUrl = (url = null) => {
+    if (url) setSong(url);
+    setShowYouTubeWizard(false);
   };
 
   const handleKeyDown = ({ code }) => {
@@ -35,23 +45,28 @@ const Form = ({ item, onComplete }) => {
     nameInputRef?.current.focus();
   }, []);
 
-  return (
+  return showYouTubeWizard ? (
+    <SearchSong updateSongUrl={updateSongUrl} />
+  ) : (
     <>
       <Input
         type="text"
-        placeholder="Name"
+        placeholder="Player name"
         value={name}
         onChange={({ target }) => setName(target.value)}
         ref={nameInputRef}
         onKeyDown={handleKeyDown}
       />
-      <Input
-        type="text"
-        placeholder="Song url (e.g. from YouTube)"
-        value={song}
-        onChange={({ target }) => setSong(target.value)}
-        onKeyDown={handleKeyDown}
-      />
+      <ButtonInput>
+        <Input
+          type="text"
+          placeholder="Song name or use the wizard"
+          value={song}
+          onChange={({ target }) => setSong(target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <Button text="🧙" onClick={() => setShowYouTubeWizard(true)} />
+      </ButtonInput>
       <ButtonWrapper>
         <Button text="CANCEL" onClick={onComplete} />
         <Button text="SAVE" disabled={!name || !song} onClick={() => save()} />
