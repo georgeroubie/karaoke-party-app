@@ -69,7 +69,7 @@ const Menu = () => (
     </Title>
     <Nav>
       {items.map(({ icon, text, url }) => (
-        <NavLink to={url} key={icon} className={({ isActive }) => (isActive ? 'active' : null)}>
+        <NavLink to={url} key={icon}>
           <Icon type={icon} />
           <Text>{text}</Text>
         </NavLink>
