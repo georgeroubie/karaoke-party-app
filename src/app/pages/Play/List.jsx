@@ -8,11 +8,11 @@ const YOUTUBE_SEARCH = 'https://www.youtube.com/results?search_query=';
 
 const ListItems = styled.ul`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: ${({ theme: { spacing } }) => spacing.small};
 
   @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
 
@@ -36,7 +36,7 @@ const Item = styled.li`
   ${({ $animate }) =>
     $animate &&
     css`
-      ${setAnimation('winner 0.3s linear 10')}
+      ${setAnimation('winner infinite 1s linear')}
 
       @media (prefers-reduced-motion: reduce) {
         background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};

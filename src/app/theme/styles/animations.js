@@ -2,11 +2,20 @@ import { css } from 'styled-components';
 
 const animations = css`
   @keyframes winner {
-    from {
+    0% {
       background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};
     }
-    to {
+    25% {
       background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
+    }
+    50% {
+      background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};
+    }
+    75% {
+      background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
+    }
+    100% {
+      background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};
     }
   }
 
