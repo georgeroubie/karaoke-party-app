@@ -45,6 +45,7 @@ const StyledButton = styled.button`
     filter: blur(2px);
     cursor: none;
     pointer-events: none;
+    user-select: none;
   }
 `;
 

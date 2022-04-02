@@ -4,8 +4,6 @@ import _Button from '../../components/Button';
 import { AppContext } from '../../state/Context';
 import { setAnimation, textTruncate } from '../../theme/styles/helpers';
 
-const YOUTUBE_SEARCH = 'https://www.youtube.com/results?search_query=';
-
 const ListItems = styled.ul`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -103,28 +101,17 @@ const List = () => {
   return (
     <>
       <ListItems>
-        {players.map(({ id, name, song, active }) => {
-          let songUrl;
-          if (song.startsWith('http')) {
-            songUrl = song;
-          } else {
-            songUrl = `${YOUTUBE_SEARCH}${encodeURIComponent(song)}`;
-            if (!song.includes('karaoke')) {
-              songUrl += '%20karaoke';
-            }
-          }
-          return (
-            <Item key={id} $animate={active}>
-              <Link href={songUrl} target="_blank" rel="noreferrer">
-                {name}
-              </Link>
-              <Actions>
-                <Button size="small" icon="mic" onClick={() => window.open(songUrl, '_blank')} />
-                <Button size="small" type="danger" icon="delete" onClick={() => deletePlayer(id)} />
-              </Actions>
-            </Item>
-          );
-        })}
+        {players.map(({ id, name, song, active }) => (
+          <Item key={id} $animate={active}>
+            <Link href={song} target="_blank" rel="noreferrer">
+              {name}
+            </Link>
+            <Actions>
+              <Button size="small" icon="mic" onClick={() => window.open(song, '_blank')} />
+              <Button size="small" type="danger" icon="delete" onClick={() => deletePlayer(id)} />
+            </Actions>
+          </Item>
+        ))}
       </ListItems>
       {players.length > 1 &&
         (shuffle ? (

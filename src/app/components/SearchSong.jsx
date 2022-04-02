@@ -1,16 +1,22 @@
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import { textTruncate } from '../theme/styles/helpers';
-import ButtonInput from './ButtonInput';
+import _ButtonInput from './ButtonInput';
 import _Video from './Video';
 import Warning from './Warning';
 
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 const YOUTUBE_EMBED = 'https://www.youtube.com/embed';
 const YOUTUBE_WATCH = 'https://www.youtube.com/watch?v';
+const YOUTUBE_SEARCH = 'https://www.youtube.com/results?search_query';
 const API_KEY = 'AIzaSyCpjIdSNvjvsfW8kferxS2-ov93DtpD3PU';
+
+const ButtonInput = styled(_ButtonInput)`
+  margin: ${({ theme: { spacing } }) => spacing.normal} 0;
+`;
 
 const VideoWrapper = styled.div`
   border: 1px solid ${({ theme: { colors } }) => colors.borderPrimary};
@@ -22,10 +28,8 @@ const VideoWrapper = styled.div`
 `;
 
 const VideoItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 150px;
+  margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
 const Video = styled(_Video)`
@@ -33,8 +37,7 @@ const Video = styled(_Video)`
 `;
 
 const SelectVideo = styled(Button)`
-  height: 100%;
-  flex-shrink: 0;
+  width: 100%;
 `;
 
 const Title = styled.h3`
@@ -44,7 +47,7 @@ const Title = styled.h3`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.small};
 `;
 
-const SearchSong = ({ updateSongUrl }) => {
+const SearchSong = ({ disabled, save, setSongUrl }) => {
   const songInputRef = useRef(null);
   const [songName, setSongName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -95,6 +98,16 @@ const SearchSong = ({ updateSongUrl }) => {
     }
   };
 
+  const handleChange = ({ target }) => {
+    const { value } = target;
+    setSongName(value);
+    if (value) {
+      setSongUrl(`${YOUTUBE_SEARCH}=${encodeURIComponent(value)}`);
+    } else {
+      setSongUrl(null);
+    }
+  };
+
   useEffect(() => {
     songInputRef?.current.focus();
   }, []);
@@ -106,9 +119,9 @@ const SearchSong = ({ updateSongUrl }) => {
           placeholder="Song name"
           ref={songInputRef}
           value={songName}
-          onChange={({ target }) => setSongName(target.value)}
+          onChange={handleChange}
           onKeyDown={handleKeyDown}
-          disabled={loading}
+          disabled={loading || disabled}
         />
         <Button
           icon={loading ? 'loader' : 'search'}
@@ -116,21 +129,28 @@ const SearchSong = ({ updateSongUrl }) => {
           onClick={loadVideos}
           disabled={!songName || loading}
         />
-        <Button icon="cancel" onClick={() => updateSongUrl()} disabled={loading} />
       </ButtonInput>
-      {message && <Warning>{message}</Warning>}
-      {!message &&
+      {message ? (
+        <Warning>{message}</Warning>
+      ) : (
         videoList.map((video) => (
           <VideoWrapper key={video.id}>
             <Title>{video.title}</Title>
             <VideoItem>
               <Video video={video} />
-              <SelectVideo icon="check" onClick={() => updateSongUrl(video.url)} />
             </VideoItem>
+            <SelectVideo text="USE THIS SONG" onClick={() => save(video.url)} />
           </VideoWrapper>
-        ))}
+        ))
+      )}
     </>
   );
+};
+
+SearchSong.propTypes = {
+  disabled: PropTypes.bool.isRequired,
+  save: PropTypes.func.isRequired,
+  setSongUrl: PropTypes.func.isRequired,
 };
 
 export default SearchSong;

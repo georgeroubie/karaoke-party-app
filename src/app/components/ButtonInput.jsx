@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: ${({ theme: { spacing } }) => spacing.large};
   border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
 
   input {

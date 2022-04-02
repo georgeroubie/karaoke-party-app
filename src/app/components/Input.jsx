@@ -14,13 +14,21 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${({ theme: { colors } }) => colors.textPrimary};
   }
+
+  &:disabled {
+    filter: blur(2px);
+    cursor: none;
+    pointer-events: none;
+    user-select: none;
+  }
 `;
 
-const Input = forwardRef(({ className, value, type, placeholder, onKeyDown, onChange }, ref) => (
+const Input = forwardRef(({ className, value, type, disabled, placeholder, onKeyDown, onChange }, ref) => (
   <StyledInput
     className={className}
     value={value}
     type={type}
+    disabled={disabled}
     placeholder={placeholder}
     onChange={onChange}
     onKeyDown={onKeyDown}
@@ -32,6 +40,7 @@ Input.propTypes = {
   className: PropTypes.string,
   value: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
@@ -41,6 +50,7 @@ Input.defaultProps = {
   className: null,
   value: '',
   type: 'text',
+  disabled: false,
   placeholder: null,
   onChange: () => {},
   onKeyDown: () => {},
