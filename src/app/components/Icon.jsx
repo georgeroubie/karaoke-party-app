@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import Cancel from '../svg/Cancel';
-import Check from '../svg/Check';
-import Edit from '../svg/Edit';
 import Info from '../svg/Info';
 import Loader from '../svg/Loader';
 import Search from '../svg/Search';
@@ -14,8 +12,6 @@ const Icon = ({ type, className }) => {
   switch (type) {
     case 'delete':
       return <Delete className={className} />;
-    case 'edit':
-      return <Edit className={className} />;
     case 'info':
       return <Info className={className} />;
     case 'mic':
@@ -26,8 +22,6 @@ const Icon = ({ type, className }) => {
       return <VideoGameController className={className} />;
     case 'loader':
       return <Loader className={className} />;
-    case 'check':
-      return <Check className={className} />;
     case 'search':
       return <Search className={className} />;
     case 'cancel':
