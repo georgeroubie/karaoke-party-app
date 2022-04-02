@@ -27,10 +27,6 @@ const useAppState = () => {
     setState(actionTypes.DELETE_PLAYER, value);
   };
 
-  const editPlayer = (value) => {
-    setState(actionTypes.EDIT_PLAYER, value);
-  };
-
   // Sync state with local storage
   useEffect(() => {
     savePlayersList(state.playersList);
@@ -41,7 +37,6 @@ const useAppState = () => {
     setTheme,
     addPlayer,
     deletePlayer,
-    editPlayer,
   };
 };
 

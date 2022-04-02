@@ -17,18 +17,6 @@ const appReducer = (state, { type, value }) => {
         ...state,
         playersList: [...state.playersList.filter((item) => item.id !== value)],
       };
-    case actionTypes.EDIT_PLAYER:
-      return {
-        ...state,
-        playersList: [
-          ...state.playersList.map((item) => {
-            if (item.id === value.id) {
-              return value;
-            }
-            return item;
-          }),
-        ],
-      };
     default:
       return state;
   }
