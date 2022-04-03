@@ -131,7 +131,7 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
           icon={loading ? 'loader' : 'search'}
           iconSpin={loading}
           onClick={loadVideos}
-          disabled={!songName || loading}
+          disabled={!songName || loading || disabled}
         />
       </ButtonInput>
       {message ? (
@@ -143,7 +143,7 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
             <VideoItem>
               <Video video={video} />
             </VideoItem>
-            <SelectVideo text="USE THIS SONG" onClick={() => save(video.url)} />
+            <SelectVideo text="USE THIS SONG" disabled={disabled} onClick={() => save(video.url)} />
           </VideoWrapper>
         ))
       )}
