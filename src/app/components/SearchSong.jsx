@@ -6,7 +6,7 @@ import Input from '../components/Input';
 import { textTruncate } from '../theme/styles/helpers';
 import _ButtonInput from './ButtonInput';
 import _Video from './Video';
-import Warning from './Warning';
+import _Warning from './Warning';
 
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 const YOUTUBE_EMBED = 'https://www.youtube.com/embed';
@@ -16,6 +16,10 @@ const API_KEY = 'AIzaSyCpjIdSNvjvsfW8kferxS2-ov93DtpD3PU';
 
 const ButtonInput = styled(_ButtonInput)`
   margin: ${({ theme: { spacing } }) => spacing.normal} 0;
+`;
+
+const Warning = styled(_Warning)`
+  margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
 const VideoWrapper = styled.div`
