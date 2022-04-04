@@ -1,17 +1,50 @@
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AddPlayer from '../pages/AddPlayer';
-import Info from '../pages/Info';
-import NotFound from '../pages/NotFound';
 import Play from '../pages/Play';
-import Players from '../pages/Players';
+
+// Lazy load components
+const Players = lazy(() => import('../pages/Players'));
+const AddPlayer = lazy(() => import('../pages/AddPlayer'));
+const Info = lazy(() => import('../pages/Info'));
+const NotFound = lazy(() => import('../pages/NotFound'));
+
+const Loader = ({ children }) => <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>;
 
 const Routing = () => (
   <Routes>
-    <Route path="*" element={<NotFound />} />
     <Route path="/" element={<Play />} />
-    <Route path="/players" element={<Players />} />
-    <Route path="/add-player" element={<AddPlayer />} />
-    <Route path="/info" element={<Info />} />
+    <Route
+      path="/players"
+      element={
+        <Loader>
+          <Players />
+        </Loader>
+      }
+    />
+    <Route
+      path="/add-player"
+      element={
+        <Loader>
+          <AddPlayer />
+        </Loader>
+      }
+    />
+    <Route
+      path="/info"
+      element={
+        <Loader>
+          <Info />
+        </Loader>
+      }
+    />
+    <Route
+      path="*"
+      element={
+        <Loader>
+          <NotFound />
+        </Loader>
+      }
+    />
   </Routes>
 );
 
