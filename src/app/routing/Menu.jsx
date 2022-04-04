@@ -60,7 +60,7 @@ const Text = styled.span`
 
 const items = [
   { icon: 'video_game_controller', text: 'PLAY', url: '/' },
-  { icon: 'people', text: 'PLAYERS', url: '/players' },
+  { icon: 'people', text: 'ADD NEW', url: '/add-player' },
   { icon: 'info', text: 'INFO', url: '/info' },
 ];
 

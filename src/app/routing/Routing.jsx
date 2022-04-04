@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Play from '../pages/Play';
 
 // Lazy load components
-const Players = lazy(() => import('../pages/Players'));
 const AddPlayer = lazy(() => import('../pages/AddPlayer'));
 const Info = lazy(() => import('../pages/Info'));
 const NotFound = lazy(() => import('../pages/NotFound'));
@@ -13,14 +12,6 @@ const Loader = ({ children }) => <Suspense fallback={<div>Loading...</div>}>{chi
 const Routing = () => (
   <Routes>
     <Route path="/" element={<Play />} />
-    <Route
-      path="/players"
-      element={
-        <Loader>
-          <Players />
-        </Loader>
-      }
-    />
     <Route
       path="/add-player"
       element={

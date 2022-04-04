@@ -14,11 +14,11 @@ const AddPlayer = () => {
   const [name, setName] = useState('');
   const [songUrl, setSongUrl] = useState(null);
 
-  const goToPlayersList = () => navigate('/players');
+  const goToHome = () => navigate('/');
 
   const save = (url) => {
     addPlayer({ id: Date.now(), name, song: url ? url : songUrl, active: false });
-    goToPlayersList();
+    goToHome();
   };
 
   const handleKeyDown = ({ code }) => {
@@ -43,7 +43,7 @@ const AddPlayer = () => {
       />
       <SearchSong disabled={!name} save={save} setSongUrl={setSongUrl} />
       <ButtonWrapper>
-        <Button text="CANCEL" onClick={goToPlayersList} />
+        <Button text="CANCEL" onClick={goToHome} />
         <Button text="SAVE" disabled={!name || !songUrl} onClick={() => save()} />
       </ButtonWrapper>
     </PageWrapper>
