@@ -1,11 +1,13 @@
 import { NavLink as _NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Logo from '../svg/Logo';
+import _Logo from '../svg/Logo';
 import _Icon from './../components/Icon';
 
-const Title = styled.h1`
+const Logo = styled(_Logo)`
   user-select: none;
+  display: block;
   margin: ${({ theme: { spacing } }) => spacing.large} auto;
+  cursor: pointer;
 
   @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
     margin: ${({ theme: { spacing } }) => spacing.xlarge} auto;
@@ -64,9 +66,7 @@ const items = [
 
 const Menu = () => (
   <>
-    <Title onClick={() => (window.location.href = '/')}>
-      <Logo />
-    </Title>
+    <Logo onClick={() => (window.location.href = '/')} />
     <Nav>
       {items.map(({ icon, text, url }) => (
         <NavLink to={url} key={icon}>

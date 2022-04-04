@@ -26,6 +26,11 @@ const lightTheme = {
   screens: {
     medium: '600px',
   },
+  fontWeight: {
+    normal: 400,
+    bold: 500,
+    extraBold: 700,
+  },
 };
 
 export { lightTheme, LIGHT_THEME_KEY };

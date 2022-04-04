@@ -26,6 +26,11 @@ const darkTheme = {
   screens: {
     medium: '600px',
   },
+  fontWeight: {
+    normal: 400,
+    bold: 500,
+    extraBold: 700,
+  },
 };
 
 export { darkTheme, DARK_THEME_KEY };

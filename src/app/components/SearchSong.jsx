@@ -46,9 +46,7 @@ const SelectVideo = styled(Button)`
 
 const Title = styled.h3`
   ${textTruncate}
-  font-size: 1.2rem;
-  line-height: 1.7rem;
-  margin: 0 0 ${({ theme: { spacing } }) => spacing.small};
+  margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 
 const SearchSong = ({ disabled, save, setSongUrl }) => {
