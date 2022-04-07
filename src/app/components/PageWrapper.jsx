@@ -11,7 +11,7 @@ const Title = styled.h2`
   align-items: center;
   justify-content: space-between;
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
-  height: 40px;
+  min-height: 40px;
   line-height: 40px;
 `;
 

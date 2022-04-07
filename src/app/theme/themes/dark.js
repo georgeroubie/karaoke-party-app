@@ -24,7 +24,7 @@ const darkTheme = {
     xlarge: '45px',
   },
   screens: {
-    medium: '600px',
+    medium: '700px',
   },
   fontWeight: {
     normal: 400,

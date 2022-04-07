@@ -7,7 +7,7 @@ import List from './List';
 const Play = () => {
   const { state } = useContext(AppContext);
 
-  const Wrapper = ({ children }) => <PageWrapper title="Karaoke time, let's play 🥳">{children}</PageWrapper>;
+  const Wrapper = ({ children }) => <PageWrapper title="Karaoke time, let's have fun 🥳">{children}</PageWrapper>;
 
   if (!state.playersList.length) {
     return (

@@ -44,7 +44,7 @@ const Info = () => {
   };
 
   return (
-    <PageWrapper>
+    <PageWrapper title="Everything you need to know">
       <Title>About</Title>
       <Text>
         Karaoke Party web application can create a list of players with their songs from YouTube and randomly choose who

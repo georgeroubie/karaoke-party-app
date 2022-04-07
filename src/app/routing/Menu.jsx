@@ -7,10 +7,13 @@ const Logo = styled(_Logo)`
   user-select: none;
   display: block;
   margin: ${({ theme: { spacing } }) => spacing.large} auto;
+  padding: 0 ${({ theme: { spacing } }) => spacing.normal};
   cursor: pointer;
+  max-width: 400px;
 
   @media (min-width: ${({ theme: { screens } }) => screens.medium}) {
     margin: ${({ theme: { spacing } }) => spacing.xlarge} auto;
+    max-width: 500px;
   }
 `;
 
@@ -59,8 +62,8 @@ const Text = styled.span`
 `;
 
 const items = [
-  { icon: 'video_game_controller', text: 'PLAY', url: '/' },
-  { icon: 'people', text: 'ADD NEW', url: '/add-player' },
+  { icon: 'video_game_controller', text: 'GAME', url: '/' },
+  { icon: 'people', text: 'ADD PLAYER', url: '/add-player' },
   { icon: 'info', text: 'INFO', url: '/info' },
 ];
 

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import _Button from '../../components/Button';
+import { randomNumber } from '../../helpers/generators';
 import { AppContext } from '../../state/Context';
 import { setAnimation, textTruncate } from '../../theme/styles/helpers';
 
@@ -65,7 +66,6 @@ const List = () => {
   const stopShufflingTimeout = useRef(null);
   const [players, setPlayers] = useState(state.playersList);
   const [shuffle, setShuffle] = useState(false);
-  const [disabledAction, setDisabledAction] = useState(false);
 
   useEffect(() => {
     setPlayers(state.playersList);
@@ -83,19 +83,14 @@ const List = () => {
     setShuffle(true);
     animateInterval.current = setInterval(() => {
       const clonedPlayers = players.map((player) => ({ ...player, active: false }));
-      const randomIndex = Math.floor(Math.random() * players.length);
+      const randomIndex = randomNumber(0, players.length - 1);
       clonedPlayers[randomIndex].active = true;
       setPlayers(clonedPlayers);
     }, 50);
-  };
-
-  const stopShuffling = () => {
-    setDisabledAction(true);
     stopShufflingTimeout.current = setTimeout(() => {
       setShuffle(false);
-      setDisabledAction(false);
       clearInterval(animateInterval?.current);
-    }, 3000);
+    }, Math.floor(randomNumber(3, 6) * 1000));
   };
 
   return (
@@ -113,19 +108,16 @@ const List = () => {
           </Item>
         ))}
       </ListItems>
-      {players.length > 1 &&
-        (shuffle ? (
-          <Button
-            text={disabledAction ? null : 'STOP'}
-            icon={disabledAction ? 'loader' : null}
-            onClick={stopShuffling}
-            disabled={disabledAction}
-            iconSpin
-            size="small"
-          />
-        ) : (
-          <Button text="SHUFFLE" onClick={startShuffling} size="small" />
-        ))}
+      {players.length > 1 && (
+        <Button
+          text={shuffle ? null : 'PLAY'}
+          icon={shuffle ? 'loader' : null}
+          disabled={shuffle}
+          iconSpin={shuffle}
+          onClick={startShuffling}
+          size="small"
+        />
+      )}
     </>
   );
 };

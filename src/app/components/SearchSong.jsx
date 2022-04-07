@@ -58,7 +58,7 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
 
   const createAPIUrl = () => {
     const searchTerm = encodeURIComponent(songName.includes('karaoke') ? songName : `${songName} karaoke`);
-    return `${YOUTUBE_API_URL}/search?key=${API_KEY}&part=snippet&limit=3&q=${searchTerm}`;
+    return `${YOUTUBE_API_URL}/search?key=${API_KEY}&part=snippet&limit=10&q=${searchTerm}`;
   };
 
   const startLoading = () => {
