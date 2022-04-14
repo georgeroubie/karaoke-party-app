@@ -104,7 +104,11 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
     const { value } = target;
     setSongName(value);
     if (value) {
-      setSongUrl(`${YOUTUBE_SEARCH}=${encodeURIComponent(value)}`);
+      if (value.startsWith('http')) {
+        setSongUrl(value);
+      } else {
+        setSongUrl(`${YOUTUBE_SEARCH}=${encodeURIComponent(value)}`);
+      }
     } else {
       setSongUrl(null);
     }
