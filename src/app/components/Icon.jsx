@@ -4,7 +4,6 @@ import Info from '../svg/Info';
 import Loader from '../svg/Loader';
 import Search from '../svg/Search';
 import Delete from './../svg/Delete';
-import Mic from './../svg/Mic';
 import People from './../svg/People';
 import VideoGameController from './../svg/VideoGameController';
 
@@ -14,8 +13,6 @@ const Icon = ({ type, className }) => {
       return <Delete className={className} />;
     case 'info':
       return <Info className={className} />;
-    case 'mic':
-      return <Mic className={className} />;
     case 'people':
       return <People className={className} />;
     case 'video_game_controller':

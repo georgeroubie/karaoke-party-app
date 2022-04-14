@@ -15,7 +15,12 @@ const appReducer = (state, { type, value }) => {
     case actionTypes.DELETE_PLAYER:
       return {
         ...state,
-        playersList: [...state.playersList.filter((item) => item.id !== value)],
+        playersList: state.playersList.filter((item) => item.id !== value),
+      };
+    case actionTypes.MAKE_PLAYER_ACTIVE:
+      return {
+        ...state,
+        playersList: state.playersList.map((player) => ({ ...player, active: player.id === value })),
       };
     default:
       return state;

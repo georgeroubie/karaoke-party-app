@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import NoPlayers from '../../components/NoPlayers';
 import { AppContext } from '../../state/Context';
-import List from './List';
+import Game from './Game';
 import Wrapper from './Wrapper';
 
-const Play = () => {
+const Sing = () => {
   const { state } = useContext(AppContext);
 
   if (!state.playersList.length) {
@@ -17,9 +17,9 @@ const Play = () => {
 
   return (
     <Wrapper>
-      <List />
+      <Game />
     </Wrapper>
   );
 };
 
-export default Play;
+export default Sing;

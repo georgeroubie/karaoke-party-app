@@ -6,6 +6,7 @@ import Play from '../pages/Play';
 const AddPlayer = lazy(() => import('../pages/AddPlayer'));
 const Info = lazy(() => import('../pages/Info'));
 const NotFound = lazy(() => import('../pages/NotFound'));
+const Sing = lazy(() => import('../pages/Sing'));
 
 const Loader = ({ children }) => <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>;
 
@@ -25,6 +26,14 @@ const Routing = () => (
       element={
         <Loader>
           <Info />
+        </Loader>
+      }
+    />
+    <Route
+      path="/sing"
+      element={
+        <Loader>
+          <Sing />
         </Loader>
       }
     />

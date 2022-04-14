@@ -1,9 +1,9 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import _Button from '../../components/Button';
-import { randomNumber } from '../../helpers/generators';
 import { AppContext } from '../../state/Context';
-import { setAnimation, textTruncate } from '../../theme/styles/helpers';
+import { textTruncate } from '../../theme/styles/helpers';
 
 const ListItems = styled.ul`
   display: grid;
@@ -17,7 +17,7 @@ const ListItems = styled.ul`
 
 const Actions = styled.div`
   display: flex;
-  width: 80px;
+  width: 40px;
   flex-shrink: 0;
 `;
 
@@ -31,16 +31,6 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  ${({ $animate }) =>
-    $animate &&
-    css`
-      ${setAnimation('winner infinite 1s linear')}
-
-      @media (prefers-reduced-motion: reduce) {
-        background-color: ${({ theme: { colors } }) => colors.successBackgroundPrimary};
-      }
-    `};
 
   ${Button} {
     width: 40px;
@@ -62,62 +52,23 @@ const Link = styled.a`
 
 const List = () => {
   const { state, deletePlayer } = useContext(AppContext);
-  const animateInterval = useRef(null);
-  const stopShufflingTimeout = useRef(null);
-  const [players, setPlayers] = useState(state.playersList);
-  const [shuffle, setShuffle] = useState(false);
-
-  useEffect(() => {
-    setPlayers(state.playersList);
-  }, [state.playersList]);
-
-  useEffect(
-    () => () => {
-      clearInterval(animateInterval?.current);
-      clearTimeout(stopShufflingTimeout?.current);
-    },
-    [],
-  );
-
-  const startShuffling = () => {
-    setShuffle(true);
-    animateInterval.current = setInterval(() => {
-      const clonedPlayers = players.map((player) => ({ ...player, active: false }));
-      const randomIndex = randomNumber(0, players.length - 1);
-      clonedPlayers[randomIndex].active = true;
-      setPlayers(clonedPlayers);
-    }, 50);
-    stopShufflingTimeout.current = setTimeout(() => {
-      setShuffle(false);
-      clearInterval(animateInterval?.current);
-    }, Math.floor(randomNumber(3, 6) * 1000));
-  };
+  const navigate = useNavigate();
 
   return (
     <>
       <ListItems>
-        {players.map(({ id, name, song, active }) => (
-          <Item key={id} $animate={active}>
+        {state.playersList.map(({ id, name, song }) => (
+          <Item key={id}>
             <Link href={song} target="_blank" rel="noreferrer">
               {name}
             </Link>
             <Actions>
-              <Button size="small" icon="mic" onClick={() => window.open(song, '_blank')} />
               <Button size="small" type="danger" icon="delete" onClick={() => deletePlayer(id)} />
             </Actions>
           </Item>
         ))}
       </ListItems>
-      {players.length > 1 && (
-        <Button
-          text={shuffle ? null : 'PLAY'}
-          icon={shuffle ? 'loader' : null}
-          disabled={shuffle}
-          iconSpin={shuffle}
-          onClick={startShuffling}
-          size="small"
-        />
-      )}
+      {state.playersList.length > 1 && <Button text="PLAY" onClick={() => navigate('/sing')} size="small" />}
     </>
   );
 };

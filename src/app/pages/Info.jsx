@@ -7,7 +7,7 @@ import { AppContext } from '../state/Context';
 import { DARK_THEME_KEY } from '../theme/themes/dark';
 import { LIGHT_THEME_KEY } from '../theme/themes/light';
 
-const Title = styled.h2`
+const Title = styled.h3`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 

@@ -19,12 +19,16 @@ const useAppState = () => {
     setState(actionTypes.UPDATE_THEME_SELECTION, value);
   };
 
-  const addPlayer = (value) => {
-    setState(actionTypes.ADD_PLAYER, value);
+  const addPlayer = (player) => {
+    setState(actionTypes.ADD_PLAYER, player);
   };
 
-  const deletePlayer = (value) => {
-    setState(actionTypes.DELETE_PLAYER, value);
+  const deletePlayer = (id) => {
+    setState(actionTypes.DELETE_PLAYER, id);
+  };
+
+  const makePlayerActive = (id) => {
+    setState(actionTypes.MAKE_PLAYER_ACTIVE, id);
   };
 
   // Sync state with local storage
@@ -37,6 +41,7 @@ const useAppState = () => {
     setTheme,
     addPlayer,
     deletePlayer,
+    makePlayerActive,
   };
 };
 
