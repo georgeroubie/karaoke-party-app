@@ -47,9 +47,9 @@ const Info = () => {
     <PageWrapper title="Everything you need to know">
       <Title>About</Title>
       <Text>
-        Karaoke Party web application can create a list of players with their songs from YouTube and randomly choose who
-        will sing next. The application is created by George Roubie (me). You can find the code of this web application
-        on my GitHub page. If you like it give the repository a star on&nbsp;
+        Karaoke Party web application can create a list of players with karaoke songs from YouTube and randomly choose
+        who will sing next. The application is created by George Roubie (me). You can find the code of this web
+        application on my GitHub page. If you like it give the repository a star on&nbsp;
         <a href="https://github.com/georgeroubie/karaoke-party-app" target="blank">
           GitHub
         </a>
