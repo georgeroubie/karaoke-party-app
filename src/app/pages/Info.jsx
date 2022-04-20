@@ -13,6 +13,11 @@ const Title = styled.h3`
 
 const Text = styled.p`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
+
+  form {
+    display: inline-block;
+    margin-left: ${({ theme: { spacing } }) => spacing.normal};
+  }
 `;
 
 const Button = styled(_Button)`
@@ -45,6 +50,22 @@ const Info = () => {
 
   return (
     <PageWrapper title="Everything you need to know">
+      <Title>Donation</Title>
+      <Text>
+        Buy me a coffee or a beer:
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+          <input type="hidden" name="hosted_button_id" value="FA7AF4NJTZVEG" />
+          <input
+            type="image"
+            src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
+            border="0"
+            name="submit"
+            title="PayPal - The safer, easier way to pay online!"
+            alt="Donate with PayPal button"
+          />
+          <img alt="" border="0" src="https://www.paypal.com/en_GR/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+      </Text>
       <Title>About</Title>
       <Text>
         Karaoke Party web application can create a list of players with karaoke songs from YouTube and randomly choose
