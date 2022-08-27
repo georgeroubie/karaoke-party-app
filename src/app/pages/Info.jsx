@@ -11,7 +11,7 @@ const Title = styled.h3`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
 
   form {
