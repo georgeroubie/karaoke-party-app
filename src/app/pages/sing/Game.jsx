@@ -6,6 +6,7 @@ import Subtitle from '../../components/typography/Subtitle';
 import { randomNumber } from '../../helpers/generators';
 import { AppContext } from '../../state/Context';
 import ActivePlayer from './ActivePlayer';
+import NextPlayer from './NextPlayer';
 
 const Game = () => {
   const navigate = useNavigate();
@@ -66,11 +67,7 @@ const Game = () => {
 
   return (
     <>
-      {showNext && (
-        <Subtitle>
-          Amazing performance <ActivePlayer />!
-        </Subtitle>
-      )}
+      {showNext && <NextPlayer />}
       {!showNext && (
         <Subtitle>
           Time to sing <ActivePlayer animate={!shuffle} />
