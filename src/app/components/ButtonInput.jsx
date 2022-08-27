@@ -4,14 +4,14 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
 
   input {
     border: 0;
   }
 
   button {
-    border-left: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+    border-left: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
   }
 `;
 

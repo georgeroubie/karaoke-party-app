@@ -23,7 +23,7 @@ const NavLink = styled(_NavLink)`
   justify-content: center;
   padding: ${({ theme: { spacing } }) => spacing.normal};
   text-decoration: none;
-  border-right: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border-right: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
 
   &.active {
     background-color: ${({ theme: { colors } }) => colors.backgroundSecondary};
@@ -34,7 +34,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
   margin-bottom: ${({ theme: { spacing } }) => spacing.large};
 
   ${NavLink} {

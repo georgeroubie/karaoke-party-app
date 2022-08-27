@@ -13,6 +13,9 @@ const baseTheme = {
     bold: 500,
     extraBold: 700,
   },
+  border: {
+    size: '2px',
+  },
 };
 
 export default baseTheme;

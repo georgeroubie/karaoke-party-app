@@ -44,7 +44,7 @@ const Link = styled.a`
   width: 100%;
   height: 40px;
   line-height: 40px;
-  border: 1px solid ${({ theme: { colors } }) => colors.borderSecondary};
+  border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
   border-right: 0;
   padding: 0 ${({ theme: { spacing } }) => spacing.small};
   text-decoration: none;

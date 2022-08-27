@@ -23,7 +23,7 @@ const Warning = styled(_Warning)`
 `;
 
 const VideoWrapper = styled.div`
-  border: 1px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
   padding: ${({ theme: { spacing } }) => spacing.normal};
 
   &:not(:last-child) {

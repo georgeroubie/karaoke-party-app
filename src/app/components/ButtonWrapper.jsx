@@ -4,14 +4,14 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
 
   button {
     flex-grow: 1;
     flex-basis: 0;
 
     &:not(:last-child) {
-      border-right: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+      border-right: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
     }
   }
 `;

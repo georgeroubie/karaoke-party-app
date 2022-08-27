@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
-  border: 2px solid ${({ theme: { colors } }) => colors.borderPrimary};
+  border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
   outline: 0;
   border-radius: 0;
   padding: ${({ theme: { spacing } }) => spacing.normal};
