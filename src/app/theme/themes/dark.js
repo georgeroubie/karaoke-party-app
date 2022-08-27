@@ -1,6 +1,9 @@
+import baseTheme from './base';
+
 const DARK_THEME_KEY = 'dark';
 
 const darkTheme = {
+  ...baseTheme,
   colors: {
     backgroundPrimary: '#0C2D48',
     backgroundSecondary: '#145DA0',
@@ -16,20 +19,6 @@ const darkTheme = {
     dangerBackgroundPrimary: '#D8581C',
     dangerTextPrimary: '#ffffff',
     dangerBackgroundSecondary: '#e3672d',
-  },
-  spacing: {
-    small: '8px',
-    normal: '15px',
-    large: '30px',
-    xlarge: '45px',
-  },
-  screens: {
-    medium: '700px',
-  },
-  fontWeight: {
-    normal: 400,
-    bold: 500,
-    extraBold: 700,
   },
 };
 
