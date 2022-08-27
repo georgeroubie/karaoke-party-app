@@ -5,9 +5,9 @@ import Button from '../../components/form-elements/Button';
 import _ButtonInput from '../../components/form-elements/ButtonInput';
 import Input from '../../components/form-elements/Input';
 import _Subtitle from '../../components/typography/Subtitle';
-import _Warning from '../../components/typography/Warning';
+import Warning from '../../components/typography/Warning';
 import { textTruncate } from '../../theme/styles/helpers';
-import _Video from './Video';
+import Video from './Video';
 
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 const YOUTUBE_EMBED = 'https://www.youtube.com/embed';
@@ -17,10 +17,6 @@ const API_KEY = 'AIzaSyCpjIdSNvjvsfW8kferxS2-ov93DtpD3PU';
 
 const ButtonInput = styled(_ButtonInput)`
   margin: ${({ theme: { spacing } }) => spacing.normal} 0;
-`;
-
-const Warning = styled(_Warning)`
-  margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
 const VideoWrapper = styled.div`
@@ -33,12 +29,8 @@ const VideoWrapper = styled.div`
 `;
 
 const VideoItem = styled.div`
-  height: 150px;
+  height: 180px;
   margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
-`;
-
-const Video = styled(_Video)`
-  width: 100%;
 `;
 
 const SelectVideo = styled(Button)`

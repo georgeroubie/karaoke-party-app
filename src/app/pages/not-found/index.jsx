@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import PageWrapper from '../../components/layout/PageWrapper';
+import Description from '../../components/typography/Description';
 
 const NotFound = () => (
   <PageWrapper title="Oops :(">
-    <p>The page you are looking for does not exist!</p>
-    <p>
+    <Description>The page you are looking for does not exist!</Description>
+    <Description>
       Click <Link to="/">here</Link> to go to home page.
-    </p>
+    </Description>
   </PageWrapper>
 );
 

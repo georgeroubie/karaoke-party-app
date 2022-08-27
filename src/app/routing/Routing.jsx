@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Play from '../pages/play';
 
-// Lazy load components
+// Lazy load pages
 const AddPlayer = lazy(() => import('../pages/add-player'));
 const Info = lazy(() => import('../pages/info'));
 const NotFound = lazy(() => import('../pages/not-found'));

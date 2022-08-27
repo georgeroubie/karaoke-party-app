@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.form`
   display: inline-block;
-  margin-left: ${({ theme: { spacing } }) => spacing.normal};
+  margin-left: ${({ theme: { spacing } }) => spacing.small};
 `;
 
 const Input = styled.input``;

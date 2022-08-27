@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
   height: 100%;
+  width: 100%;
 `;
 
 const Content = styled.iframe`

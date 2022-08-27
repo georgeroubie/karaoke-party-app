@@ -1,55 +1,28 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import _Button from '../../components/form-elements/Button';
 import PageWrapper from '../../components/layout/PageWrapper';
+import Description from '../../components/typography/Description';
 import Subtitle from '../../components/typography/Subtitle';
 import { deleteAllData } from '../../helpers/storage';
-import { AppContext } from '../../state/Context';
-import { DARK_THEME_KEY } from '../../theme/themes/dark';
-import { LIGHT_THEME_KEY } from '../../theme/themes/light';
 import Paypal from './Paypal';
-
-const Text = styled.div`
-  margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
-`;
+import Settings from './Settings';
 
 const Button = styled(_Button)`
   margin-top: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
-const Selection = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Checkbox = styled.input`
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const Label = styled.label`
-  cursor: pointer;
-`;
-
 const Info = () => {
-  const { state, setTheme } = useContext(AppContext);
   const [showDelete, setShowDelete] = useState(false);
-  const { theme } = state;
-  const id = 'theme_selection';
-
-  const handleThemeOnChange = ({ target }) => {
-    setTheme(target.checked ? DARK_THEME_KEY : LIGHT_THEME_KEY);
-  };
 
   return (
     <PageWrapper title="Everything you need to know">
       <Subtitle>Donation</Subtitle>
-      <Text>
-        Buy me a coffee or a beer:
-        <Paypal />
-      </Text>
+      <Description>
+        Buy me a coffee or a beer: <Paypal />
+      </Description>
       <Subtitle>About</Subtitle>
-      <Text>
+      <Description>
         Karaoke Party web application can create a list of players with karaoke songs from YouTube and randomly choose
         who will sing next. The application is created by George Roubie (me). You can find the code of this web
         application on my GitHub page. If you like it give the repository a star on&nbsp;
@@ -65,23 +38,19 @@ const Info = () => {
           Medium
         </a>
         . Thank you for using it, have fun!
-      </Text>
+      </Description>
 
       <Subtitle>Data</Subtitle>
-      <Text>
+      <Description>
         Karaoke Party web application does not use any kind of cookies or tracking. All the data are saved on your
         device. In case you clear the browser cache all the players will be deleted. You can also delete manually all
         the data.
         <br />
         {!showDelete && <Button type="danger" text="DELETE ALL DATA" onClick={() => setShowDelete(true)} />}
         {showDelete && <Button type="danger" text="ARE YOU SURE?" onClick={deleteAllData} />}
-      </Text>
+      </Description>
 
-      <Subtitle>Settings</Subtitle>
-      <Selection>
-        <Checkbox type="checkbox" id={id} name={id} checked={theme === DARK_THEME_KEY} onChange={handleThemeOnChange} />
-        <Label htmlFor={id}>Dark theme</Label>
-      </Selection>
+      <Settings />
     </PageWrapper>
   );
 };

@@ -48,7 +48,7 @@ const Nav = styled.nav`
 `;
 
 const Icon = styled(_Icon)`
-  width: 2rem;
+  width: ${({ theme: { fontSize } }) => fontSize.xlarge};
   height: auto;
 `;
 

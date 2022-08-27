@@ -5,7 +5,7 @@ const Wrapper = styled.p`
   background-color: ${({ theme: { colors } }) => colors.warningBackgroundPrimary};
   padding: ${({ theme: { spacing } }) => spacing.normal};
   color: ${({ theme: { colors } }) => colors.warningTextPrimary};
-  margin: 0;
+  margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
   text-align: center;
   user-select: none;
 

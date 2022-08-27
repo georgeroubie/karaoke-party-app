@@ -51,7 +51,7 @@ const StyledButton = styled.button`
 
 const Text = styled.span`
   font-size: ${({ theme: { fontSize } }) => fontSize.small};
-  font-weight: 500;
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
 `;
 
 const Icon = styled(_Icon)`
