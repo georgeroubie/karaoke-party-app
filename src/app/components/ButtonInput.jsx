@@ -24,7 +24,6 @@ ButtonInput.propTypes = {
 
 ButtonInput.defaultProps = {
   className: null,
-  onKeyDown: () => {},
 };
 
 export default ButtonInput;
