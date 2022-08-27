@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button';
-import ButtonWrapper from '../../components/ButtonWrapper';
+import Button from '../../components/form-elements/Button';
+import ButtonWrapper from '../../components/form-elements/ButtonWrapper';
 import Subtitle from '../../components/typography/Subtitle';
 import { randomNumber } from '../../helpers/generators';
 import { AppContext } from '../../state/Context';

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import _Button from './Button';
-import _Title from './typography/Title';
+import _Button from '../form-elements/Button';
+import _Title from '../typography/Title';
 
 const Wrapper = styled.main`
   padding-bottom: ${({ theme: { spacing } }) => spacing.xlarge};

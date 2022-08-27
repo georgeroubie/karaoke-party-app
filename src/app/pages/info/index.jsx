@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
-import _Button from '../components/Button';
-import PageWrapper from '../components/PageWrapper';
-import Paypal from '../components/Paypal';
-import Subtitle from '../components/typography/Subtitle';
-import { deleteAllData } from '../helpers/storage';
-import { AppContext } from '../state/Context';
-import { DARK_THEME_KEY } from '../theme/themes/dark';
-import { LIGHT_THEME_KEY } from '../theme/themes/light';
+import _Button from '../../components/form-elements/Button';
+import PageWrapper from '../../components/layout/PageWrapper';
+import Subtitle from '../../components/typography/Subtitle';
+import { deleteAllData } from '../../helpers/storage';
+import { AppContext } from '../../state/Context';
+import { DARK_THEME_KEY } from '../../theme/themes/dark';
+import { LIGHT_THEME_KEY } from '../../theme/themes/light';
+import Paypal from './Paypal';
 
 const Text = styled.div`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};

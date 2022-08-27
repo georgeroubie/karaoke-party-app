@@ -1,7 +1,7 @@
 import { NavLink as _NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import _Icon from '../components/ui/Icon';
 import _Logo from '../svg/Logo';
-import _Icon from './../components/Icon';
 
 const Logo = styled(_Logo)`
   user-select: none;

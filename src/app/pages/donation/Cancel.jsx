@@ -1,4 +1,4 @@
-import PageWrapper from '../../components/PageWrapper';
+import PageWrapper from '../../components/layout/PageWrapper';
 
 const CancelDonation = () => (
   <PageWrapper title="No worries">

@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import Play from '../pages/play';
 
 // Lazy load components
-const AddPlayer = lazy(() => import('../pages/AddPlayer'));
-const Info = lazy(() => import('../pages/Info'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const AddPlayer = lazy(() => import('../pages/add-player'));
+const Info = lazy(() => import('../pages/info'));
+const NotFound = lazy(() => import('../pages/not-found'));
 const Sing = lazy(() => import('../pages/sing'));
 const CompleteDonation = lazy(() => import('../pages/donation/Complete'));
 const CancelDonation = lazy(() => import('../pages/donation/Cancel'));

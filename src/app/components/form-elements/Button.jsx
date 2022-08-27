@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { setAnimation } from '../theme/styles/helpers';
-import _Icon from './../components/Icon';
+import { setAnimation } from '../../theme/styles/helpers';
+import _Icon from '../ui/Icon';
 
 const StyledButton = styled.button`
   outline: 0;

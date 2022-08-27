@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PageWrapper from '../components/PageWrapper';
+import PageWrapper from '../../components/layout/PageWrapper';
 
 const NotFound = () => (
   <PageWrapper title="Oops :(">

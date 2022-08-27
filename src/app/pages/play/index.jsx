@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import NoPlayers from '../../components/NoPlayers';
+import NoPlayers from '../../components/messages/NoPlayers';
 import { AppContext } from '../../state/Context';
 import List from './List';
 import Wrapper from './Wrapper';

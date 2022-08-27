@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import ButtonWrapper from '../components/ButtonWrapper';
-import Input from '../components/Input';
-import PageWrapper from '../components/PageWrapper';
-import SearchSong from '../components/SearchSong';
-import { AppContext } from '../state/Context';
+import Button from '../../components/form-elements/Button';
+import ButtonWrapper from '../../components/form-elements/ButtonWrapper';
+import Input from '../../components/form-elements/Input';
+import PageWrapper from '../../components/layout/PageWrapper';
+import { AppContext } from '../../state/Context';
+import SearchSong from './SearchSong';
 
 const AddPlayer = () => {
   const nameInputRef = useRef(null);

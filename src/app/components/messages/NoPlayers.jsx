@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Warning from './typography/Warning';
+import Warning from '../typography/Warning';
 
 const NoPlayers = () => (
   <Warning>

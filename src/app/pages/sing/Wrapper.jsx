@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import PageWrapper from '../../components/PageWrapper';
+import PageWrapper from '../../components/layout/PageWrapper';
 
 const Wrapper = ({ children }) => <PageWrapper title="Party time 🎉">{children}</PageWrapper>;
 

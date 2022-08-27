@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import { textTruncate } from '../theme/styles/helpers';
-import _ButtonInput from './ButtonInput';
-import _Subtitle from './typography/Subtitle';
-import _Warning from './typography/Warning';
+import Button from '../../components/form-elements/Button';
+import _ButtonInput from '../../components/form-elements/ButtonInput';
+import Input from '../../components/form-elements/Input';
+import _Subtitle from '../../components/typography/Subtitle';
+import _Warning from '../../components/typography/Warning';
+import { textTruncate } from '../../theme/styles/helpers';
 import _Video from './Video';
 
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';

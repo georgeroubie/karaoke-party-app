@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import _Button from '../../components/Button';
+import _Button from '../../components/form-elements/Button';
 import { AppContext } from '../../state/Context';
 import { resetList, textTruncate } from '../../theme/styles/helpers';
 

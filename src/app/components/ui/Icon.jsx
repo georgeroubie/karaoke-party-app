@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import Cancel from '../svg/Cancel';
-import Info from '../svg/Info';
-import Loader from '../svg/Loader';
-import Search from '../svg/Search';
-import Delete from './../svg/Delete';
-import People from './../svg/People';
-import VideoGameController from './../svg/VideoGameController';
+import Cancel from '../../svg/Cancel';
+import Delete from '../../svg/Delete';
+import Info from '../../svg/Info';
+import Loader from '../../svg/Loader';
+import People from '../../svg/People';
+import Search from '../../svg/Search';
+import VideoGameController from '../../svg/VideoGameController';
 
 const Icon = ({ type, className }) => {
   switch (type) {
