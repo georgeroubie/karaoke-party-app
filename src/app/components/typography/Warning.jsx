@@ -8,10 +8,6 @@ const Wrapper = styled.p`
   margin-bottom: ${({ theme: { spacing } }) => spacing.normal};
   text-align: center;
   user-select: none;
-
-  a {
-    color: ${({ theme: { colors } }) => colors.warningTextPrimary};
-  }
 `;
 
 const Warning = ({ className, children }) => <Wrapper className={className}>{children}</Wrapper>;
