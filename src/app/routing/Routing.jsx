@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Play from '../pages/players';
+import Play from '../pages/play';
 
 // Lazy load components
 const AddPlayer = lazy(() => import('../pages/AddPlayer'));
 const Info = lazy(() => import('../pages/Info'));
 const NotFound = lazy(() => import('../pages/NotFound'));
-const Sing = lazy(() => import('../pages/game'));
+const Sing = lazy(() => import('../pages/sing'));
 const CompleteDonation = lazy(() => import('../pages/donation/Complete'));
 const CancelDonation = lazy(() => import('../pages/donation/Cancel'));
 
