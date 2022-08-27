@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   font-size: ${({ theme: { fontSize } }) => fontSize.normal};
-  line-height: ${({ theme: { fontSize } }) => fontSize.xlarge};
+  line-height: ${({ theme: { lineHeight } }) => lineHeight.normal};
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.normal};
   margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;

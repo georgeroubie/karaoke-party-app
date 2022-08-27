@@ -7,8 +7,8 @@ const StyledButton = styled.button`
   outline: 0;
   cursor: pointer;
   padding: 0 ${({ theme: { spacing } }) => spacing.normal};
-  height: 50px;
-  line-height: 50px;
+  height: ${({ theme: { height } }) => height.normal};
+  line-height: ${({ theme: { height } }) => height.normal};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -24,8 +24,8 @@ const StyledButton = styled.button`
   ${({ $size }) =>
     $size === 'small' &&
     css`
-      height: 40px;
-      line-height: 40px;
+      height: ${({ theme: { height } }) => height.small};
+      line-height: ${({ theme: { height } }) => height.small};
       padding: 0 ${({ theme: { spacing } }) => spacing.small};
     `}
 

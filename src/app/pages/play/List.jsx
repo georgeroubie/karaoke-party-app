@@ -43,8 +43,8 @@ const Link = styled.a`
   ${textTruncate}
   font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
   width: 100%;
-  height: 40px;
-  line-height: 40px;
+  height: ${({ theme: { height } }) => height.small};
+  line-height: ${({ theme: { height } }) => height.small};
   border: ${({ theme: { border, colors } }) => `${border.size} solid ${colors.borderPrimary}`};
   border-right: 0;
   padding: 0 ${({ theme: { spacing } }) => spacing.small};
