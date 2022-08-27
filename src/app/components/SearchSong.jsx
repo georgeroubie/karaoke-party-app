@@ -5,8 +5,9 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import { textTruncate } from '../theme/styles/helpers';
 import _ButtonInput from './ButtonInput';
+import _Subtitle from './typography/Subtitle';
+import _Warning from './typography/Warning';
 import _Video from './Video';
-import _Warning from './Warning';
 
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 const YOUTUBE_EMBED = 'https://www.youtube.com/embed';
@@ -44,9 +45,8 @@ const SelectVideo = styled(Button)`
   width: 100%;
 `;
 
-const Title = styled.h3`
+const Subtitle = styled(_Subtitle)`
   ${textTruncate}
-  margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 
 const SearchSong = ({ disabled, save, setSongUrl }) => {
@@ -141,7 +141,7 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
       ) : (
         videoList.map((video) => (
           <VideoWrapper key={video.id}>
-            <Title>{video.title}</Title>
+            <Subtitle>{video.title}</Subtitle>
             <VideoItem>
               <Video video={video} />
             </VideoItem>

@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import _Button from './Button';
+import _Title from './typography/Title';
 
 const Wrapper = styled.main`
   padding-bottom: ${({ theme: { spacing } }) => spacing.xlarge};
 `;
 
-const Title = styled.h2`
+const Title = styled(_Title)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
-  min-height: 40px;
-  line-height: 40px;
 `;
 
 const Button = styled(_Button)`

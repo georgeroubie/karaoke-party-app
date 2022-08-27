@@ -16,18 +16,6 @@ const typography = css`
   a {
     color: ${({ theme: { colors } }) => colors.textPrimary};
   }
-
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    font-weight: ${({ theme: { fontWeight } }) => fontWeight.extraBold};
-  }
-
-  h3 {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-    font-weight: ${({ theme: { fontWeight } }) => fontWeight.extraBold};
-  }
 `;
 
 export { typography };

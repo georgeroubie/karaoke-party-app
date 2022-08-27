@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import _Button from '../../components/Button';
 import { AppContext } from '../../state/Context';
-import { textTruncate } from '../../theme/styles/helpers';
+import { resetList, textTruncate } from '../../theme/styles/helpers';
 
 const ListItems = styled.ul`
+  ${resetList}
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: ${({ theme: { spacing } }) => spacing.small};

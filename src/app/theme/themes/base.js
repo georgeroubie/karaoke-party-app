@@ -8,6 +8,12 @@ const baseTheme = {
   screens: {
     medium: '700px',
   },
+  fontSize: {
+    small: '0.85rem',
+    normal: '1rem',
+    large: '1.2rem',
+    xlarge: '1.5rem',
+  },
   fontWeight: {
     normal: 400,
     bold: 500,

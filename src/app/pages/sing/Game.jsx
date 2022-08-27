@@ -1,15 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import Button from '../../components/Button';
 import ButtonWrapper from '../../components/ButtonWrapper';
+import Subtitle from '../../components/typography/Subtitle';
 import { randomNumber } from '../../helpers/generators';
 import { AppContext } from '../../state/Context';
 import ActivePlayer from './ActivePlayer';
-
-const Title = styled.h3`
-  margin-bottom: ${({ theme: { spacing } }) => spacing.large};
-`;
 
 const Game = () => {
   const navigate = useNavigate();
@@ -71,14 +67,14 @@ const Game = () => {
   return (
     <>
       {showNext && (
-        <Title>
+        <Subtitle>
           Amazing performance <ActivePlayer />!
-        </Title>
+        </Subtitle>
       )}
       {!showNext && (
-        <Title>
+        <Subtitle>
           Time to sing <ActivePlayer animate={!shuffle} />
-        </Title>
+        </Subtitle>
       )}
       <ButtonWrapper>
         <Button text="CANCEL" size="small" onClick={goToHome} disabled={shuffle} />

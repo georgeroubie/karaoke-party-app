@@ -18,4 +18,10 @@ const textTruncate = css`
   text-overflow: ellipsis;
 `;
 
-export { setAnimation, setTransition, textTruncate };
+const resetList = css`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+`;
+
+export { setAnimation, setTransition, textTruncate, resetList };

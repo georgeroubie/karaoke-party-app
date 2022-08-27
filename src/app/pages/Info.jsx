@@ -2,22 +2,15 @@ import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import _Button from '../components/Button';
 import PageWrapper from '../components/PageWrapper';
+import Paypal from '../components/Paypal';
+import Subtitle from '../components/typography/Subtitle';
 import { deleteAllData } from '../helpers/storage';
 import { AppContext } from '../state/Context';
 import { DARK_THEME_KEY } from '../theme/themes/dark';
 import { LIGHT_THEME_KEY } from '../theme/themes/light';
 
-const Title = styled.h3`
-  margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
-`;
-
 const Text = styled.div`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.large};
-
-  form {
-    display: inline-block;
-    margin-left: ${({ theme: { spacing } }) => spacing.normal};
-  }
 `;
 
 const Button = styled(_Button)`
@@ -50,23 +43,12 @@ const Info = () => {
 
   return (
     <PageWrapper title="Everything you need to know">
-      <Title>Donation</Title>
+      <Subtitle>Donation</Subtitle>
       <Text>
         Buy me a coffee or a beer:
-        <form action="https://www.paypal.com/donate" method="post" target="_top">
-          <input type="hidden" name="hosted_button_id" value="FA7AF4NJTZVEG" />
-          <input
-            type="image"
-            src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
-            border="0"
-            name="submit"
-            title="PayPal - The safer, easier way to pay online!"
-            alt="Donate with PayPal button"
-          />
-          <img alt="" border="0" src="https://www.paypal.com/en_GR/i/scr/pixel.gif" width="1" height="1" />
-        </form>
+        <Paypal />
       </Text>
-      <Title>About</Title>
+      <Subtitle>About</Subtitle>
       <Text>
         Karaoke Party web application can create a list of players with karaoke songs from YouTube and randomly choose
         who will sing next. The application is created by George Roubie (me). You can find the code of this web
@@ -85,7 +67,7 @@ const Info = () => {
         . Thank you for using it, have fun!
       </Text>
 
-      <Title>Data</Title>
+      <Subtitle>Data</Subtitle>
       <Text>
         Karaoke Party web application does not use any kind of cookies or tracking. All the data are saved on your
         device. In case you clear the browser cache all the players will be deleted. You can also delete manually all
@@ -95,7 +77,7 @@ const Info = () => {
         {showDelete && <Button type="danger" text="ARE YOU SURE?" onClick={deleteAllData} />}
       </Text>
 
-      <Title>Settings</Title>
+      <Subtitle>Settings</Subtitle>
       <Selection>
         <Checkbox type="checkbox" id={id} name={id} checked={theme === DARK_THEME_KEY} onChange={handleThemeOnChange} />
         <Label htmlFor={id}>Dark theme</Label>
