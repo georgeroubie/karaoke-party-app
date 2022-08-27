@@ -50,12 +50,12 @@ const StyledButton = styled.button`
 `;
 
 const Text = styled.span`
-  font-size: 0.9rem;
+  font-size: ${({ theme: { fontSize } }) => fontSize.small};
   font-weight: 500;
 `;
 
 const Icon = styled(_Icon)`
-  width: 1.3rem;
+  width: ${({ theme: { fontSize } }) => fontSize.large};
   height: auto;
 
   ${({ $spin }) =>
