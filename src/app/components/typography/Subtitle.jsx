@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Wrapper = styled.h2`
   font-size: ${({ theme: { fontSize } }) => fontSize.large};
   line-height: ${({ theme: { lineHeight } }) => lineHeight.large};
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight.extraBold};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
   margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 

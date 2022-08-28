@@ -26,8 +26,8 @@ const baseTheme = {
   },
   fontWeight: {
     normal: 400,
-    bold: 500,
-    extraBold: 700,
+    medium: 500,
+    bold: 700,
   },
   border: {
     size: '2px',

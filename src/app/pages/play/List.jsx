@@ -41,7 +41,7 @@ const Item = styled.li`
 
 const Link = styled.a`
   ${textTruncate}
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.medium};
   width: 100%;
   height: ${({ theme: { height } }) => height.small};
   line-height: ${({ theme: { height } }) => height.small};
