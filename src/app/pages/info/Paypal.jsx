@@ -10,7 +10,7 @@ const Input = styled.input``;
 const Image = styled.img``;
 
 const Paypal = () => (
-  <Wrapper>
+  <Wrapper action="https://www.paypal.com/donate" method="post" target="_top">
     <Input type="hidden" name="hosted_button_id" value="FA7AF4NJTZVEG" />
     <Input
       type="image"

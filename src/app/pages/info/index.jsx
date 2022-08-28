@@ -12,6 +12,10 @@ const Button = styled(_Button)`
   margin-top: ${({ theme: { spacing } }) => spacing.normal};
 `;
 
+const Hyperlink = styled.a`
+  margin: 0 ${({ theme: { spacing } }) => spacing.small};
+`;
+
 const Info = () => {
   const [showDelete, setShowDelete] = useState(false);
 
@@ -25,18 +29,18 @@ const Info = () => {
       <Description>
         Karaoke Party web application can create a list of players with karaoke songs from YouTube and randomly choose
         who will sing next. The application is created by George Roubie (me). You can find the code of this web
-        application on my GitHub page. If you like it give the repository a star on&nbsp;
-        <a href="https://github.com/georgeroubie/karaoke-party-app" target="blank">
+        application on my GitHub page. If you like it give the repository a star on
+        <Hyperlink href="https://github.com/georgeroubie/karaoke-party-app" target="_blank" rel="noreferrer">
           GitHub
-        </a>
-        &nbsp;and follow me on&nbsp;
-        <a href="https://www.linkedin.com/in/georgeroubie" target="_blank" rel="noreferrer">
+        </Hyperlink>
+        and follow me on
+        <Hyperlink href="https://www.linkedin.com/in/georgeroubie" target="_blank" rel="noreferrer">
           LinkedIn
-        </a>
-        &nbsp;and&nbsp;
-        <a href="https://george-roubie.medium.com" target="_blank" rel="noreferrer">
+        </Hyperlink>
+        and
+        <Hyperlink href="https://george-roubie.medium.com" target="_blank" rel="noreferrer">
           Medium
-        </a>
+        </Hyperlink>
         . Thank you for using it, have fun!
       </Description>
 
