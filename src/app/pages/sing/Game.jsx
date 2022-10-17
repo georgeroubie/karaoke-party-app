@@ -14,8 +14,6 @@ const Game = () => {
   const [shuffle, setShuffle] = useState(state.playersList.length > 1);
   const [showNext, setShowNext] = useState(false);
 
-  const goToHome = () => navigate('/');
-
   useEffect(() => {
     let timeout;
     if (shuffle) {
@@ -42,16 +40,24 @@ const Game = () => {
     };
   }, [shuffle, makePlayerActive, state.playersList]);
 
-  const getActivePlayer = () => state.playersList.find((player) => player.active);
+  function goToHome() {
+    navigate('/');
+  }
 
-  const getInActivePlayer = () => state.playersList.find((player) => !player.active);
+  function getActivePlayer() {
+    return state.playersList.find((player) => player.active);
+  }
 
-  const openSong = () => {
+  function getInActivePlayer() {
+    return state.playersList.find((player) => !player.active);
+  }
+
+  function openSong() {
     window.open(getActivePlayer().song, '_blank');
     setShowNext(true);
-  };
+  }
 
-  const handleNext = () => {
+  function handleNext() {
     setShowNext(false);
     if (state.playersList.length === 2) {
       makePlayerActive(getInActivePlayer().id);
@@ -63,7 +69,7 @@ const Game = () => {
       deletePlayer(getActivePlayer().id);
       setShuffle(true);
     }
-  };
+  }
 
   return (
     <>
