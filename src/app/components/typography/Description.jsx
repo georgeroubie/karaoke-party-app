@@ -8,7 +8,9 @@ const Wrapper = styled.div`
   margin: 0 0 ${({ theme: { spacing } }) => spacing.normal};
 `;
 
-const Description = ({ className, children }) => <Wrapper className={className}>{children}</Wrapper>;
+const Description = ({ className, children }) => {
+  return <Wrapper className={className}>{children}</Wrapper>;
+};
 
 Description.propTypes = {
   className: PropTypes.string,
