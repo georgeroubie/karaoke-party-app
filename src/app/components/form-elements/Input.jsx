@@ -23,18 +23,20 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = forwardRef(({ className, value, type, disabled, placeholder, onKeyDown, onChange }, ref) => (
-  <StyledInput
-    className={className}
-    value={value}
-    type={type}
-    disabled={disabled}
-    placeholder={placeholder}
-    onChange={onChange}
-    onKeyDown={onKeyDown}
-    ref={ref}
-  />
-));
+const Input = forwardRef(({ className, value, type, disabled, placeholder, onKeyDown, onChange }, ref) => {
+  return (
+    <StyledInput
+      className={className}
+      value={value}
+      type={type}
+      disabled={disabled}
+      placeholder={placeholder}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      ref={ref}
+    />
+  );
+});
 
 Input.propTypes = {
   className: PropTypes.string,
