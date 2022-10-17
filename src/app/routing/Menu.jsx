@@ -72,7 +72,7 @@ const Menu = () => (
     <Logo onClick={() => (window.location.href = '/')} />
     <Nav>
       {items.map(({ icon, text, url }) => (
-        <NavLink to={url} key={icon}>
+        <NavLink to={url} key={icon} end>
           <Icon type={icon} />
           <Text>{text}</Text>
         </NavLink>
