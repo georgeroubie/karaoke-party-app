@@ -16,7 +16,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const ButtonWrapper = ({ className, children }) => <Wrapper className={className}>{children}</Wrapper>;
+const ButtonWrapper = ({ className, children }) => {
+  return <Wrapper className={className}>{children}</Wrapper>;
+};
 
 ButtonWrapper.propTypes = {
   children: PropTypes.node.isRequired,
