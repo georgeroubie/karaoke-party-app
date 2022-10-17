@@ -15,7 +15,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const ButtonInput = ({ className, children }) => <Wrapper className={className}>{children}</Wrapper>;
+const ButtonInput = ({ className, children }) => {
+  return <Wrapper className={className}>{children}</Wrapper>;
+};
 
 ButtonInput.propTypes = {
   className: PropTypes.string,
