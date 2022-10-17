@@ -20,11 +20,13 @@ const Content = styled.iframe`
   height: 100%;
 `;
 
-const Video = ({ className, video }) => (
-  <Wrapper className={className}>
-    <Content title={video.title} src={video.embedUrl} />
-  </Wrapper>
-);
+const Video = ({ className, video }) => {
+  return (
+    <Wrapper className={className}>
+      <Content title={video.title} src={video.embedUrl} />
+    </Wrapper>
+  );
+};
 
 Video.propTypes = {
   className: PropTypes.string,
