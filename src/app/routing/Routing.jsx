@@ -1,6 +1,7 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Play from '../pages/play';
+import RoutingLoader from './Loader';
 
 // Lazy load pages
 const AddPlayer = lazy(() => import('../pages/add-player'));
@@ -10,60 +11,60 @@ const Sing = lazy(() => import('../pages/sing'));
 const CompleteDonation = lazy(() => import('../pages/donation/Complete'));
 const CancelDonation = lazy(() => import('../pages/donation/Cancel'));
 
-const Loader = ({ children }) => <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>;
-
-const Routing = () => (
-  <Routes>
-    <Route path="/" element={<Play />} />
-    <Route
-      path="/add-player"
-      element={
-        <Loader>
-          <AddPlayer />
-        </Loader>
-      }
-    />
-    <Route
-      path="/info"
-      element={
-        <Loader>
-          <Info />
-        </Loader>
-      }
-    />
-    <Route
-      path="/sing"
-      element={
-        <Loader>
-          <Sing />
-        </Loader>
-      }
-    />
-    <Route
-      path="/complete-donation"
-      element={
-        <Loader>
-          <CompleteDonation />
-        </Loader>
-      }
-    />
-    <Route
-      path="/cancel-donation"
-      element={
-        <Loader>
-          <CancelDonation />
-        </Loader>
-      }
-    />
-    <Route
-      path="*"
-      element={
-        <Loader>
-          <NotFound />
-        </Loader>
-      }
-    />
-  </Routes>
-);
+const Routing = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Play />} />
+      <Route
+        path="/add-player"
+        element={
+          <RoutingLoader>
+            <AddPlayer />
+          </RoutingLoader>
+        }
+      />
+      <Route
+        path="/info"
+        element={
+          <RoutingLoader>
+            <Info />
+          </RoutingLoader>
+        }
+      />
+      <Route
+        path="/sing"
+        element={
+          <RoutingLoader>
+            <Sing />
+          </RoutingLoader>
+        }
+      />
+      <Route
+        path="/complete-donation"
+        element={
+          <RoutingLoader>
+            <CompleteDonation />
+          </RoutingLoader>
+        }
+      />
+      <Route
+        path="/cancel-donation"
+        element={
+          <RoutingLoader>
+            <CancelDonation />
+          </RoutingLoader>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <RoutingLoader>
+            <NotFound />
+          </RoutingLoader>
+        }
+      />
+    </Routes>
+  );
+};
 
 export default Routing;
