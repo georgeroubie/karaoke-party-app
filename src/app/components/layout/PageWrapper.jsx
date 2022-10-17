@@ -17,16 +17,18 @@ const Button = styled(_Button)`
   width: 110px;
 `;
 
-const PageWrapper = ({ title, action, actionText, children }) => (
-  <Wrapper>
-    {title && (
-      <Title>
-        {title} {actionText && <Button size="small" text={actionText} onClick={action} />}
-      </Title>
-    )}
-    {children}
-  </Wrapper>
-);
+const PageWrapper = ({ title, action, actionText, children }) => {
+  return (
+    <Wrapper>
+      {title && (
+        <Title>
+          {title} {actionText && <Button size="small" text={actionText} onClick={action} />}
+        </Title>
+      )}
+      {children}
+    </Wrapper>
+  );
+};
 
 PageWrapper.propTypes = {
   title: PropTypes.string,
