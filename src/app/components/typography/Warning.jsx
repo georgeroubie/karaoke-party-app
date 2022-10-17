@@ -10,7 +10,9 @@ const Wrapper = styled.p`
   user-select: none;
 `;
 
-const Warning = ({ className, children }) => <Wrapper className={className}>{children}</Wrapper>;
+const Warning = ({ className, children }) => {
+  return <Wrapper className={className}>{children}</Wrapper>;
+};
 
 Warning.propTypes = {
   className: PropTypes.string,
