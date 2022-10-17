@@ -14,22 +14,24 @@ const AddPlayer = () => {
   const [name, setName] = useState('');
   const [songUrl, setSongUrl] = useState(null);
 
-  const goToHome = () => navigate('/');
-
-  const save = (url) => {
-    addPlayer({ id: Date.now(), name, song: url ? url : songUrl, active: false });
-    goToHome();
-  };
-
-  const handleKeyDown = ({ code }) => {
-    if (code === 'Enter' && name && songUrl) {
-      save();
-    }
-  };
-
   useEffect(() => {
     nameInputRef?.current.focus();
   }, []);
+
+  function goToHome() {
+    navigate('/');
+  }
+
+  function save(url) {
+    addPlayer({ id: Date.now(), name, song: url ? url : songUrl, active: false });
+    goToHome();
+  }
+
+  function handleKeyDown({ code }) {
+    if (code === 'Enter' && name && songUrl) {
+      save();
+    }
+  }
 
   return (
     <PageWrapper title="Add a new player">
