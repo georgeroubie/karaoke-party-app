@@ -65,12 +65,14 @@ const Icon = styled(_Icon)`
     `};
 `;
 
-const Button = ({ className, size, type, text, icon, iconSpin, disabled, onClick }) => (
-  <StyledButton className={className} $size={size} $type={type} disabled={disabled} onClick={onClick}>
-    {text && <Text>{text}</Text>}
-    {icon && <Icon type={icon} $spin={iconSpin} />}
-  </StyledButton>
-);
+const Button = ({ className, size, type, text, icon, iconSpin, disabled, onClick }) => {
+  return (
+    <StyledButton className={className} $size={size} $type={type} disabled={disabled} onClick={onClick}>
+      {text && <Text>{text}</Text>}
+      {icon && <Icon type={icon} $spin={iconSpin} />}
+    </StyledButton>
+  );
+};
 
 Button.propTypes = {
   className: PropTypes.string,
