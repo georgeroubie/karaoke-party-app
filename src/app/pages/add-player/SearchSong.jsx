@@ -48,18 +48,22 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
   const [message, setMessage] = useState(null);
   const [videoList, setVideoList] = useState([]);
 
-  const createAPIUrl = () => {
+  useEffect(() => {
+    songInputRef?.current.focus();
+  }, []);
+
+  function createAPIUrl() {
     const searchTerm = encodeURIComponent(songName.includes('karaoke') ? songName : `${songName} karaoke`);
     return `${YOUTUBE_API_URL}/search?key=${API_KEY}&part=snippet&limit=10&q=${searchTerm}`;
-  };
+  }
 
-  const startLoading = () => {
+  function startLoading() {
     setLoading(true);
     setMessage(null);
     setVideoList([]);
-  };
+  }
 
-  const createVideoList = (items) => {
+  function createVideoList(items) {
     const videos = items.reduce((acc, item) => {
       if (item.id.kind === 'youtube#video' && item.id.videoId) {
         acc.push({
@@ -75,24 +79,24 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
       setMessage('No songs found, try other song name');
     }
     setVideoList(videos);
-  };
+  }
 
-  const loadVideos = () => {
+  function loadVideos() {
     startLoading();
     fetch(createAPIUrl())
       .then((res) => res.json())
       .then(({ items }) => createVideoList(items))
       .catch(() => setMessage('Oops :(, something went wrong! Try again!'))
       .finally(() => setLoading(false));
-  };
+  }
 
-  const handleKeyDown = ({ code }) => {
+  function handleKeyDown({ code }) {
     if (code === 'Enter' && songName) {
       loadVideos();
     }
-  };
+  }
 
-  const handleChange = ({ target }) => {
+  function handleChange({ target }) {
     const { value } = target;
     setSongName(value);
     if (value) {
@@ -104,11 +108,7 @@ const SearchSong = ({ disabled, save, setSongUrl }) => {
     } else {
       setSongUrl(null);
     }
-  };
-
-  useEffect(() => {
-    songInputRef?.current.focus();
-  }, []);
+  }
 
   return (
     <>
