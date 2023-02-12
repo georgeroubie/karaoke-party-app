@@ -1,7 +1,7 @@
 {
   "short_name": "Karaoke party",
   "name": "Karaoke party web app",
-  "version": "7.2.1",
+  "version": "7.3.0",
   "icons": [
     {
       "src": "favicon.ico",
