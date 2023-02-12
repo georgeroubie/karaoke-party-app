@@ -8,8 +8,6 @@ const AddPlayer = lazy(() => import('../pages/add-player'));
 const Info = lazy(() => import('../pages/info'));
 const NotFound = lazy(() => import('../pages/not-found'));
 const Sing = lazy(() => import('../pages/sing'));
-const CompleteDonation = lazy(() => import('../pages/donation/Complete'));
-const CancelDonation = lazy(() => import('../pages/donation/Cancel'));
 
 const Routing = () => {
   return (
@@ -36,22 +34,6 @@ const Routing = () => {
         element={
           <RoutingLoader>
             <Sing />
-          </RoutingLoader>
-        }
-      />
-      <Route
-        path="/complete-donation"
-        element={
-          <RoutingLoader>
-            <CompleteDonation />
-          </RoutingLoader>
-        }
-      />
-      <Route
-        path="/cancel-donation"
-        element={
-          <RoutingLoader>
-            <CancelDonation />
           </RoutingLoader>
         }
       />
