@@ -1,10 +1,14 @@
 # General information
 
-[Karaoke Party web application](https://karaoke-party.click) can create a list of players with karaoke songs from YouTube and randomly choose who will sing next.
+Karaoke Party web application can create a list of players with karaoke songs from YouTube and randomly choose who will sing next.
 
-If you like it give the repository a star and follow me on [LinkedIn](https://www.linkedin.com/in/georgeroubie) and  [Medium](https://george-roubie.medium.com). 
+If you like it give the repository a star. 
 
 Thank you for using it, have fun!
+
+# Deprecated
+
+This app is no longer maintained if you want to create a karaoke party use this: https://pantomima.app/karaoke-party
   
 # Development
 
@@ -15,7 +19,7 @@ Thank you for using it, have fun!
 
 ## Installation
 1. Download project
-2. Open project folder with VSCode 
+2. Open the project folder with VSCode 
 3. Install the recommended VSCode extensions
 4. Open Terminal in the root folder and run `yarn`
 
